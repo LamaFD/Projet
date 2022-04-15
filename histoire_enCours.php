@@ -1,5 +1,6 @@
 <?php
 require_once "includes/functions.php";
+require("connect_bdd.php");
 session_start();
 ?>
 
@@ -9,8 +10,6 @@ session_start();
 <?php require_once "includes/head.php"; ?>
 
 <body>
-    <?php require("connect.php");?>
-    
     <div class="container">
         <?php require_once "includes/header.php"; ?>
 
