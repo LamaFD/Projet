@@ -12,16 +12,9 @@ session_start();
 <body>
     <div class="container">
         <?php require_once "includes/header.php"; ?>
-        <p class="container">hello</p>
-        
-    </div>
-    
-
-    
-
-    <?php 
+        <?php 
         // vérifie qu’on est bien connecté à la base de données
-    if($BDD) {
+        if($BDD) {
         // On enregistre la requête SQL dans une variable
         $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
         // On envoie la requête “à travers la connexion” et on récupère le résultat
@@ -34,11 +27,15 @@ session_start();
         // On affiche le contenu de la ligne
         
         ?>
-            <h5><a href=<?="histoire_enCours.php"?>><?=$tuple["titre"]?></a></h5>
+            <h3><a href=<?="histoire_enCours.php"?>><?=$tuple["titre"]?></a></h3>
             <p><?=$tuple["resume"]?></p>
         <?php
         }
         ?>
+        
+    </div>
+
+    
 
 </body>
 
