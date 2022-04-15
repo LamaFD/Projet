@@ -14,9 +14,10 @@ session_start();
     <div class="container">
         <?php require_once "includes/header.php"; ?>
         <p>
-        bonjour
+        Bonjour
 </p>
     </div>
+    
 
     
 </body>
