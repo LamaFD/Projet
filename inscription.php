@@ -1,3 +1,4 @@
+<?php echo "Marie" ?>
 <?php
 require_once "includes/functions.php";
 require("connect.php");
