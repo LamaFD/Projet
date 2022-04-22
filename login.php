@@ -12,8 +12,8 @@ session_start();
 <h2 class="text-center">Connexion</h2>
     <main class="well">
         <form class="text-center" method="POST">
-        <input type="text" name="login" id="login" placeholder="Entrez votre login"></br>
-        <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe"></br>
+        <input type="text" name="login" id="login" placeholder="Entrez votre login" require></br>
+        <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require></br>
         Etes vous un admin ?<br/>
         <input type="radio" name="AdminOui" id="AdminOui">
         <label for="AdminOui">Oui</label><br/>
@@ -27,14 +27,30 @@ session_start();
     <?php
         if(!empty($_POST))
         {
-        if($BDD) {
-        $maRequete = "SELECT Count(*) AS nb FROM user WHERE usr_login=:_log AND usr_password=:mdp";
-        $curseur = $BDD->query($maRequete);
-        $curseur->execute(array(
-            "_log" => $_POST["login"],
-            "mdp" => $_POST["mdp"]
-           ));
-        }
+            if(!empty($_POST["AdminOui"]))
+            {
+                $admin="admin";
+            }
+            if(!empty($_POST["AdminNon"]))
+            {
+                $admin="user";
+            }
+            $login =$_POST["login"];
+            $mdp = $_POST["mdp"];
+
+            if($BDD) {
+            $maRequete = "SELECT * FROM user WHERE user_login=:_log AND user_password=:mdp AND user_role=:user_role";
+            $curseur = $BDD->query($maRequete);
+            $curseur->execute(array($login,$mdp,$admin));
+            if ($curseur->rowCount() == 1) {
+                $_SESSION['Admin']=$admin;
+                redirect("index.php");
+            }
+            else 
+            {
+                echo "Utilisateur non reconnu";
+            }
+            }
         ?>
     
         <?php
