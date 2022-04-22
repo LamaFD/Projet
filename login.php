@@ -39,16 +39,12 @@ session_start();
             $mdp = $_POST["mdp"];
 
             if($BDD) {
-            $maRequete = "SELECT * FROM user WHERE user_login=:_log AND user_password=:mdp AND user_role=:user_role";
-            $curseur = $BDD->query($maRequete);
+            $maRequete = "SELECT * FROM user WHERE user_login=? AND user_mdp=? AND user_role=?";
+            $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($login,$mdp,$admin));
             if ($curseur->rowCount() == 1) {
-                $_SESSION['Admin']=$admin;
+                $_SESSION['role']=$admin;
                 redirect("accueil.php");
-            }
-            else 
-            {
-                echo "Utilisateur non reconnu";
             }
             }}
         ?>

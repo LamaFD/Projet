@@ -1,11 +1,19 @@
 <?php 
 // Check if a user is connected
 function isUserConnected() {
-    return isset($_SESSION['login']);
+    return isset($_SESSION['role']);
 }
 
 function administratorIsUserConnected() {
-    return $_SESSION['role']=="Admin";
+    if($_SESSION['role']=="admin")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
 }
 
 // Redirect to a URL
