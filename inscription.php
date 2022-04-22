@@ -47,6 +47,7 @@ session_start();
                     '_mdp' => $mdp,
                     '_role' => "user" 
                     )); 
+                    echo "Vos etes inscrit !";
                 }
 
                 }

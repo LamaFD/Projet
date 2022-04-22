@@ -47,6 +47,10 @@ session_start();
                 $_SESSION['role']=$admin;
                 redirect("accueil.php");
             }
+            else if ($curseur->rowCount() == 0)
+            {
+                echo "Vous n'etes pas inscrit !";
+            }
             }}
         ?>
     

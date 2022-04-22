@@ -1,11 +1,9 @@
 <!doctype html>
 <html>
 <?php require_once "includes/head.php"; ?>
-
+<?php require_once "includes/header.php"; ?>
 <body>
     <div class="container">
-        <?php require_once "includes/header.php"; ?>
-        
         <form action="">
             <label for="titre_paragraphe"> Titre de votre paragraphe : </label><br/><input type="text" name="titre_paragraphe" id="titre_paragraphe" size="35"/></br>
             <label for="premiere_page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="premiere_page" id="premiere_page"></textarea><br/>

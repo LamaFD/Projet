@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <?php require_once "includes/head.php"; ?>
+<?php require_once "includes/header.php"; ?>
 
 <body>
     <div class="container">
-        <?php require_once "includes/header.php"; ?>
         <form action="">
         <h3>Informations générales sur votre histoire</h3>
             <table>

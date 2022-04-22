@@ -11,28 +11,20 @@
                 <ul class="nav navbar-nav">
                     <li><a href="admin.php">Mode admin</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                        <li><a href="ajout_histoire_titre.php">Créer une histoire</a></li>
+                    </ul>
             <?php }} ?>
-            <ul class="nav navbar-nav navbar-right">
+
                 <?php if (isUserConnected()) { ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span> Bienvenue</b>
-                        </a>
-                        <ul class="dropdown-menu">
+                        <ul  class="nav navbar-nav navbar-right">
                             <li><a href="logout.php">Se déconnecter</a></li>
                         </ul>
-                    </li>
                 <?php } else { ?>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span> Non connecté <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
+                        <ul  class="nav navbar-nav navbar-right">
                             <li><a href="login.php">Se connecter</a></li>
                         </ul>
-                    </li>
                 <?php } ?>
-            </ul>
         </div>
     </div>
 </nav>

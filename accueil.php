@@ -8,10 +8,9 @@ session_start();
 <html>
 
 <?php require_once "includes/head.php"; ?>
-
+<?php require_once "includes/header.php"; ?>
 <body>
     <div class="container">
-        <?php require_once "includes/header.php"; ?>
         <?php 
         // vérifie qu’on est bien connecté à la base de données
         if($BDD) {
