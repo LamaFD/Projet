@@ -44,23 +44,14 @@ session_start();
             $curseur->execute(array($login,$mdp,$admin));
             if ($curseur->rowCount() == 1) {
                 $_SESSION['Admin']=$admin;
-                redirect("index.php");
+                redirect("accueil.php");
             }
             else 
             {
                 echo "Utilisateur non reconnu";
             }
-            }
+            }}
         ?>
     
-        <?php
-        
-            $tuple = $curseur->fetch();
-            if($tuple["nb"]!=0)
-            {
-                redirect("accueil.php"); 
-            }   
-        }
-    ?>
     </html>
 
