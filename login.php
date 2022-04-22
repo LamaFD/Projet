@@ -20,7 +20,8 @@ session_start();
         <input type="radio" name="AdminNon" id="AdminNon">
         <label for="AdminNon">Non</label><br/>
         <button type="submit">Se connecter</button>
-        <button type="reset">Annuler</button>
+        <button type="reset">Effacer</button><br/>
+        <input type="submit" name="inscription" value="inscription" formaction="inscription.php">
         </form>
     </main>
 
