@@ -27,7 +27,7 @@ session_start();
         
         ?>
             <h3 class="text-primary" ><?=$tuple["titre"]?></h3>
-            <p><?=$tuple["resume"]?></p>
+            <p><?=$tuple["resume_histoire"]?></p>
             <p>Nombre de fois joué : <?=$tuple["nbr_joue"]?> </p>
             <p>Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </p>
             <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?titre=".$tuple["titre"]?>>

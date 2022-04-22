@@ -5,8 +5,10 @@
 <body>
     <div class="container">
         <form action="">
-            <label for="titre_paragraphe"> Titre de votre paragraphe : </label><br/><input type="text" name="titre_paragraphe" id="titre_paragraphe" size="35"/></br>
-            <label for="premiere_page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="premiere_page" id="premiere_page"></textarea><br/>
+            <label for="titre_page"> Titre de votre page : </label><br/><input type="text" name="titre_page" id="titre_page" size="35"/></br>
+            <input type="radio" name="Premier_page" id="Premier_page">
+            <label for="Premier_page">Est la premiere page</label><br/>
+            <label for="page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="page" id="page"></textarea><br/>
             Choix 1 :<select name="liaison1" id="liaison1"><option value="1">1</option> 
             <option value="2">2</option></select>
             Choix 2 :<select name="liaison2" id="liaison2"><option value="1">1</option><option value="2">2</option></select><br/>

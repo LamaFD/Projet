@@ -27,7 +27,7 @@ session_start();
         
         ?>
             <h3><a href=<?="histoire_enCours.php"?>><?=$tuple["titre"]?></a></h3>
-            <p><?=$tuple["resume"]?></p>
+            <p><?=$tuple["resume_histoire"]?></p>
         <?php
         }
         ?>
