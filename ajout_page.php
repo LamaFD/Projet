@@ -53,9 +53,11 @@ session_start();
                             $tuple = $curseur2->fetch();
                             // on verifie si la premiere page est deja defini
                             if(!empty($tuple["id_premiere_page"]))
-                            {
-                                echo "vous avez deja defini une premiere page à cette histoire";
-                            }
+                            {?>
+                                <div class="alert alert-secondary" role="alert">
+                                Vous avez deja defini une premiere page à cette histoire
+                                </div>
+                            <?php }
                             else
                             {
                                 // on retrouver l'id de la page actuelle
