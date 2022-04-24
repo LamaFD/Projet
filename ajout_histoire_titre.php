@@ -17,15 +17,16 @@ session_start();
             <td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35"/></td></tr>
             <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume"></textarea><br/></td></tr>
             <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" /></td></tr>
+            <tr><td><label for="nbr_chapitres"> Nombre de chapitres dans votre histoire : </label></td><td><input type="number" name="nbr_chapitres" id="nbr_chapitres" /><tr><td>
 </table>
 <button type="submit" >Ajouter un paragraphe</button>
 
 <?php 
     if(!empty($_POST))
     {
-        $$_SESSION["titre"]=$_POST["titre"];
-        $$_SESSION["resume"]=$_POST["resume"];
-        $$_SESSION["nbr_vie"]=$_POST["nbr_vie"];
+        $_SESSION["titre"]=$_POST["titre"];
+        $_SESSION["resume"]=$_POST["resume"];
+        $_SESSION["nbr_chapitres"]=$_POST["nbr_chapitres"];
 
         $titre =$_POST["titre"];
         $resume = $_POST["resume"];
@@ -47,11 +48,11 @@ session_start();
                 '_resume' => $resume,
                 '_vies' => $nbr_vie 
                 ));
-                redirect("ajout_histoire.php"); 
+                redirect("ajout_histoire_test.php"); 
             }
         }}
     ?>
-?>
+
 
 </form>
 </body>
