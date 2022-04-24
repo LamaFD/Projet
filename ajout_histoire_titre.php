@@ -17,17 +17,13 @@ session_start();
             <td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35"/></td></tr>
             <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume"></textarea><br/></td></tr>
             <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" /></td></tr>
-            <tr><td><label for="nbr_chapitres"> Nombre de chapitres dans votre histoire : </label></td><td><input type="number" name="nbr_chapitres" id="nbr_chapitres" /><tr><td>
+            
 </table>
-<button type="submit" >Ajouter un paragraphe</button>
+<button type="submit" >Ajouter un paragraphe</button></br>
 
 <?php 
     if(!empty($_POST))
     {
-        $_SESSION["titre"]=$_POST["titre"];
-        $_SESSION["resume"]=$_POST["resume"];
-        $_SESSION["nbr_chapitres"]=$_POST["nbr_chapitres"];
-
         $titre =$_POST["titre"];
         $resume = $_POST["resume"];
         $nbr_vie =$_POST["nbr_vie"];
@@ -35,7 +31,7 @@ session_start();
         if($BDD) {
             $maRequete = "SELECT * FROM histoire WHERE titre=? AND resume_histoire=? AND nbr_vie=?";
             $curseur = $BDD->prepare($maRequete);
-            $curseur->execute(array($login,$mdp,$admin));
+            $curseur->execute(array($titre,$resume,$nbr_vie));
             if ($curseur->rowCount() == 1) {
                 echo "Une histoire avec ces informations existe deja";
             }
@@ -46,10 +42,15 @@ session_start();
                 $req->execute(array(
                 '_titre' => $titre, 
                 '_resume' => $resume,
-                '_vies' => $nbr_vie 
-                ));
-                redirect("ajout_histoire_test.php"); 
-            }
+                '_vies' => $nbr_vie,
+                )); 
+                // on refait la requete afin de pouvoir retrouver l'id de l'histoire, ce qui va servir lorsequ'on veut enregistrer les pages
+                $curseur->execute(array($titre,$resume,$nbr_vie));
+                $tuple = $curseur->fetch();
+                $_SESSION["id_histoire"]=$tuple["id_histoire"];
+
+                redirect("ajout_page.php");
+            } 
         }}
     ?>
 
