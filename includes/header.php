@@ -1,9 +1,11 @@
 <?php require_once "includes/functions.php"; ?>
+<link href="lib/css/feuillestyle.css" rel="stylesheet">
 
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-static-top navbar-custom" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="accueil.php"> My Story</a>
+            <a class="navbar-brand" href="accueil.php"> 
+            <span class=""> <img src="dragon.PNG" alt="Dessin d'un dragon" width=28 /> </span> My Story</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-target">
             <?php if (isUserConnected()) {
@@ -22,7 +24,7 @@
                         </ul>
                 <?php } else { ?>
                         <ul  class="nav navbar-nav navbar-right">
-                            <li><a href="login.php">Se connecter</a></li>
+                            <li><a href="login.php"><span class=""> <img src="casque.PNG" alt="Dessin d'un casque de chevalier" width=38 /> </span>Se connecter</a></li>
                         </ul>
                 <?php } ?>
         </div>
