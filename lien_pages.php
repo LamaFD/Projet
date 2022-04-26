@@ -32,7 +32,8 @@ session_start();
                         $curseur2->execute(array($id_histoire));
                         while($tuple2 = $curseur2->fetch()) 
                         {?>
-                            <option value=<?=$tuple2["id_page"]?>> <?=$tuple2["page_titre"]?> </option> 
+                            <option value=<?=$tuple2["id_page"]?>> <?=$tuple2["page_titre"]?> </option>
+
                         <?php }
                 ?>
             </select><br/>
@@ -52,27 +53,30 @@ session_start();
         <?php
         }
         ?>
+        </br>
         <button type="submit" >Enregistrer</button>
         </form>
 </div>
         <?php 
-            if(!empty($_POST))
+            /*if(!empty($_POST))
             {
                 $maReq_update = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
-                $curseur = $BDD->prepare($maRequete);
-                $curseur->execute(array($id_histoire));
-                while($tuple = $curseur->fetch()) {
+                $curseur_update = $BDD->prepare($maReq_update);
+                $curseur_update->execute(array($id_histoire));
+                while($tuple_update = $curseur_update->fetch()) {
+                    $choix_1=$_POST["choix_1_".$tuple_update["id_page"]];
+                    $choix_2=$_POST["choix_2_".$tuple_update["id_page"]];
 
                     // associer les id des pages suivantes la page actuelle aux choix
                     $req = $BDD->prepare('UPDATE `page` SET `choix_1` = :_choix_1 AND `choix_2` = :_choix_2  WHERE id_page = :_id');
                     $req->execute(array(
-                    '_choix_1' =>$_POST["choix_1_".$tuple2["id_page"]],
-                    '_choix_2' =>$_POST["choix_2_".$tuple2["id_page"]],
-                    '_id'=> $tuple["id_page"]
+                    '_choix_1' => $choix_1,
+                    '_choix_2' => $choix_2,
+                    '_id'=> $tuple_update["id_page"]
                 ));
 
                 }
-            }
+            }*/
         
         ?>
 

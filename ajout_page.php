@@ -13,33 +13,36 @@ session_start();
         <form method="POST">
 
                 <label for="titre_page"> Titre de votre page : </label><br/><input type="text" name="titre_page" id="titre_page" size="35" require/></br>
+                <label for="modif_vie"> Modification du vie : </label><br/><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
                 <label for="page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="page" id="page" require></textarea><br/>
                 <input type="radio" name="Premier_page" id="Premier_page">
                 <label for="Premier_page">Est la premiere page</label><br/>   
                 
             <input type="submit" value="Ajouter une page" formaction="ajout_page.php"/>
-            <input type="submit" value="Fini" formaction="lien_pages.php"/></br>
+            <input type="submit" value="Fini" formaction="lien_pages.php"/>
             
             <?php
                 if(!empty($_POST))
                 { 
                     $titre_page =$_POST["titre_page"];
+                    $modif_vie=$_POST["modif_vie"];
                     $page = $_POST["page"];
                     $id_histoire =$_SESSION["id_histoire"];
 
                     if($BDD) {
-                    $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND `texte`=? AND id_histoire=?";
+                    $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND modif_vie=? AND `texte`=? AND id_histoire=?";
                     $curseur = $BDD->prepare($maRequete);
-                    $curseur->execute(array($titre_page,$page,$id_histoire));
+                    $curseur->execute(array($titre_page,$modif_vie,$page,$id_histoire));
                     if ($curseur->rowCount() == 1) {
                         echo "Vous avez deja ecrit cette page";
                     }
                     else
                     {
-                        $req = $BDD->prepare('INSERT INTO `page` (`page_titre`, `texte`, `id_histoire`) VALUES (:_titre, 
+                        $req = $BDD->prepare('INSERT INTO `page` (`page_titre`,`modif_vie`, `texte`, `id_histoire`) VALUES (:_titre, :_modif_vie,
                         :_text,:_id_histoire)');
                         $req->execute(array(
                         '_titre' => $titre_page, 
+                        '_modif_vie' => $modif_vie,
                         '_text' => $page,
                         '_id_histoire' =>$id_histoire
                         )); 
@@ -71,6 +74,26 @@ session_start();
                                 )); 
                             }
                             
+                        }
+                    }
+
+                    if(!empty($_POST["Fini"]))
+                    {
+                        // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
+                        $maRequete3 = "SELECT * FROM histoire WHERE id_histoire=?";
+                        $curseur = $BDD->prepare($maRequete3);
+                        $curseur->execute(array($id_histoire));
+                        $tuple = $curseur->fetch();
+                        // on verifie si la premiere page est deja defini
+                        if(empty($tuple["id_premiere_page"]))
+                        {?>
+                            <div class="alert alert-secondary" role="alert">
+                            Vous devez d'abord creer une page de depart de l'histoire !
+                            </div>
+                        <?php }
+                        else
+                        {
+                            redirect("lien_pages.php");
                         }
                     }
 
