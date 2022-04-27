@@ -1,0 +1,38 @@
+.navbar-custom{
+    height: 70px;
+    background-color: rgba(32, 136, 138, 0.314);   
+}
+
+body{
+    background-color: rgba(114, 188, 171, 0.319);
+}
+
+.Titre{
+    color:rgb(68, 100, 108);
+}
+
+.Resume{
+    color : rgb(80, 59, 16);
+}
+
+*{
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+form{
+    background-color: rgba(114, 188, 171, 0.319);
+}
+button{
+    
+    background-color:  rgb(255, 255, 255);
+    color :  rgb(68, 100, 108);
+    margin: 7px;
+    
+}
+input{
+    background-color:  rgb(255, 255, 255);
+    color :  rgb(68, 100, 108);
+    margin: 10px;
+}
+button:hover {
+    background-color: rgb(194, 194, 194);
+  }

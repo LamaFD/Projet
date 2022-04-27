@@ -5,11 +5,12 @@ session_start();
 
 <!doctype html>
 <html>
+<link href="lib/css/feuillestyle2.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 
 <body>
-    <div class="container">
+
         <form method="POST">
         <h3>Informations générales sur votre histoire</h3>
             <table>

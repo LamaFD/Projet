@@ -6,10 +6,10 @@ session_start();
 
 <!doctype html>
 <html>
-
+<link href="lib/css/feuillestyle2.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
-<h2 class="text-center">Connexion</h2>
+<h2 class="text-center"><span class="Titre">Connexion</span></h2>
     <main class="well">
         <form class="text-center" method="POST">
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require></br>

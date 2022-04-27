@@ -1,3 +1,4 @@
+
 <?php
 require_once "includes/functions.php";
 require("connect_bdd.php");
@@ -6,7 +7,7 @@ session_start();
 
 <!doctype html>
 <html>
-
+<link href="lib/css/feuillestyle2.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -26,8 +27,8 @@ session_start();
         // On affiche le contenu de la ligne
         
         ?>
-            <h3><a href=<?="histoire_enCours.php"?>><?=$tuple["titre"]?></a></h3>
-            <p><?=$tuple["resume_histoire"]?></p>
+            <h3><a href=<?="histoire_enCours.php"?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
+            <p><span class="Resume"><?=$tuple["resume_histoire"]?></span></p>
         <?php
         }
         ?>
