@@ -10,7 +10,7 @@ session_start();
 <?php require_once "includes/header.php"; ?>
 
 <?php 
-        $id_histoire = $_SESSION["id_histoire_modif"];
+        $id_histoire = $_GET["id_histoire"];
 
         if($BDD) {
             // on cherche les infomrations concernant l'histoire

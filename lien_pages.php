@@ -24,6 +24,7 @@ session_start();
         ?>
             <h3><?=$tuple["page_titre"]?></a></h3>
             <label for="choix_1"> Choix 1 : </label>
+            <input type="text" name="choix_1_texte" id="choix_1_texte" size="35" placeholder="texte representant le choix 1"/>
             <select name=<?="choix_1_".$tuple2["id_page"]?> id=<?="choix_1_".$tuple2["id_page"]?>>
                 <?php 
                         // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages
@@ -38,6 +39,7 @@ session_start();
                 ?>
             </select><br/>
             <label for="choix_2"> Choix 2 : </label>
+            <input type="text" name="choix_2_texte" id="choix_2_texte" size="35" placeholder="texte representant le choix 2"/>
             <select name=<?="choix_2_".$tuple2["id_page"]?> id=<?="choix_2_".$tuple2["id_page"]?>>
                 <?php 
                         // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages
