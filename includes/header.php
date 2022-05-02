@@ -5,7 +5,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="accueil.php"> 
-            <span class=""> <img src="dragon.PNG" alt="Dessin d'un dragon" width=28 /> </span> <span class="Titre"> My Story</span></a>
+            <span > <img src="images/dragon.PNG" alt="Dessin d'un dragon" width=28 /> </span> <span class="Titre"> My Story</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-target">
             <?php if (isUserConnected()) {
@@ -24,7 +24,7 @@
                         </ul>
                 <?php } else { ?>
                         <ul  class="nav navbar-nav navbar-right ">
-                            <li><a href="login.php"><span class=""> <img src="casque.PNG" alt="Dessin d'un casque de chevalier" width=38 /> </span><span class="Titre">Se connecter</span></a></li>
+                            <li><a href="login.php"><span class=""> <img src="images/casque.PNG" alt="Dessin d'un casque de chevalier" width=38 /> </span><span class="Titre">Se connecter</span></a></li>
                         </ul>
                 <?php } ?>
         </div>
