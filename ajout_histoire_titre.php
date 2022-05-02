@@ -10,16 +10,18 @@ session_start();
 <?php require_once "includes/header.php"; ?>
 
 <body>
-
-        <form method="POST">
-        <h3>Informations générales sur votre histoire</h3>
-            <table>
-            <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35"/></td></tr>
+    <main class="container">
+    <form method="POST">
+    <h3>Informations générales sur votre histoire</h3>
+        <table>
+             <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35"/></td></tr>
             <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume"></textarea><br/></td></tr>
-            <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" /></td></tr>
-            
-</table>
-<button type="submit" >Ajouter un paragraphe</button></br>
+            <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" /></td></tr>    
+        </table>
+    <button type="submit" >Ajouter un paragraphe</button></br>
+    </form>
+    </main>
+</body>
 
 <?php 
     if(!empty($_POST))
@@ -55,6 +57,5 @@ session_start();
     ?>
 
 
-</form>
-</body>
+
 </html>

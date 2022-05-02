@@ -20,7 +20,7 @@
 
                 <?php if (isUserConnected()) { ?>
                         <ul  class="nav navbar-nav navbar-right">
-                            <li><a href="logout.php"><span class="Titre">Se déconnecter</span></a></li>
+                            <li><a href="logout.php"><span class="Titre"> <img src="images/casque.PNG" alt="Dessin d'un casque de chevalier" width=38 />Se déconnecter</span></a></li>
                         </ul>
                 <?php } else { ?>
                         <ul  class="nav navbar-nav navbar-right ">

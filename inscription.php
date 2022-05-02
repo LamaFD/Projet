@@ -23,7 +23,7 @@ session_start();
     </main>
 
     <?php
-        if(!empty($_POST))
+        if(!empty($_POST) && !empty($_POST["mdp2"]))
         {
             if($_POST["mdp"]==$_POST["mdp2"])
             {
@@ -36,7 +36,11 @@ session_start();
                 $curseur = $BDD->prepare($maRequete);
                 $curseur->execute(array($login,$mdp,$admin));
                 if ($curseur->rowCount() == 1) {
-                    echo "Vous avez deja un compte";
+                    ?>
+                    <div class="alert alert-warning" role="alert">
+                    <strong>Warning!</strong> Vous avez deja un compte !
+                    </div>
+                    <?php
                 }
                 else
                 {
@@ -53,8 +57,11 @@ session_start();
                 }
             }
             else
-            {
-                echo "Vos mots de passes ne sont pas identiques";
+            {?>
+                <div class="alert alert-danger" role="alert">
+                <strong>Warning!</strong> Vos mots de passes ne sont pas identiques !
+                </div>
+                <?php
             }
         }    
         ?>

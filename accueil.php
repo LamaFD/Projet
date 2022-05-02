@@ -27,7 +27,7 @@ session_start();
         // On affiche le contenu de la ligne
         
         ?>
-            <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."?vie=".$tuple["nbr_vie"]?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
+            <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
             <p><span class="Resume"><?=$tuple["resume_histoire"]?></span></p>
         <?php
         }
