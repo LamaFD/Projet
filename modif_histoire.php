@@ -22,7 +22,7 @@ session_start();
             $Resume = $curseur["resume_histoire"];
             $nbr_vies = $cursuer["nbr_vie"];
 
-            // on cherche les pages
+            // on cherche les pages (preparation d'affichage des pages)
             $maRequete_pages = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
             $curseur2 = $BDD->prepare($maRequete_pages);
             $curseur2->execute(array($id_histoire));
