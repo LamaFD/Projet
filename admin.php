@@ -24,17 +24,36 @@ session_start();
         // et passe à la ligne suivante à chaque appel
         while($tuple = $curseur->fetch()) {
         // On affiche le contenu de la ligne
+        if($tuple["nbr_joue"]==0)
+        {
+            $taux=0;
+        }
+        else
+        {
+            $taux = ($tuple["nbr_reussites"]/$tuple["nbr_joue"])*100;
+        }
         
         ?>
             <h3 class="text-primary" ><?=$tuple["titre"]?></h3>
             <p><?=$tuple["resume_histoire"]?></p>
             <p>Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </p>
             <p>Nombre de fois joué : <?=$tuple["nbr_joue"]?> </p>
-            <p> Taux de réussite : <?=($tuple["nbr_reussites"]/$tuple["nbr_vie"])*100?> </p>
+            <p> Taux de réussite : <?=$taux?> </p>
             <form method="POST">
             <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
             <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
             <input type="submit" name="supprime" value="Supprimer" formaction=<?="Supprime_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
+            <?php 
+            if($tuple["Cache"]==false) 
+            {?>
+                <input type="submit" name="cache" value="Cacher" formaction=<?="Visibilite_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
+            <?php }
+            else
+            {?>
+                <input type="submit" name="montre" value="Rendre visible" formaction=<?="Visibilite_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
+            <?php }
+            ?>
+            
             </form>
         <?php
         }

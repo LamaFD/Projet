@@ -25,12 +25,13 @@ session_start();
         // et passe à la ligne suivante à chaque appel
         while($tuple = $curseur->fetch()) {
         // On affiche le contenu de la ligne
-
+            if($tuple["Cache"]==0)
+            {
         ?>
             <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
             <p><span class="Resume"><?=$tuple["resume_histoire"]?></span></p>
         <?php
-        }
+        }}
         ?>
         
     </div>
