@@ -7,7 +7,7 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle2.css" rel="stylesheet">
+<link href="lib/css/feuillestyle3.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -29,7 +29,12 @@ session_start();
             {
         ?>
             <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
-            <p><span class="Resume"><?=$tuple["resume_histoire"]?></span></p>
+            <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
+            <!--<table>
+                <tr>
+                <td><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin illustrant l'histoire" width=42></td><td><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><h3><span class="Titre"><?=$tuple["titre"]?></span></h3></a></td></tr>
+            <tr><td></td><td><span class="presentation"><?=$tuple["resume_histoire"]?></span></td></tr>
+        </table>-->
         <?php
         }}
         ?>
