@@ -19,7 +19,11 @@ body{
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 form{
-    background-color: rgba(114, 188, 171, 0.319);
+    background-color: rgba(32, 136, 138, 0.314);  
+    border-radius: 10px;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top:3%;
 }
 button{
     
@@ -32,9 +36,17 @@ input{
     background-color:  rgb(255, 255, 255);
     color :  rgb(68, 100, 108);
     margin: 10px;
-    border : 2px solid rgba(114, 188, 171, 0.319)
+    border : 2px solid rgb(60, 113, 101);
+    border-radius:7px;
+}
+button {
+    background-color: rgb(194, 194, 194);
+    border : 2px solid rgb(60, 113, 101);
     border-radius:5px;
 }
-button:hover {
-    background-color: rgb(194, 194, 194);
-  }
+input[type=text]:focus {
+    background-color: rgba(170, 170, 170, 0.755);
+}
+  input[type=password]:focus {
+    background-color: rgba(170, 170, 170, 0.755);
+}
