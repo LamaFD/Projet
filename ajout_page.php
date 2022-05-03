@@ -77,7 +77,7 @@ session_start();
                         }
                     }
 
-                    if(!empty($_POST["Fini"]))
+                    /*if(!empty($_POST["Fini"]))
                     {
                         // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                         $maRequete3 = "SELECT * FROM histoire WHERE id_histoire=?";
@@ -95,7 +95,7 @@ session_start();
                         {
                             redirect("lien_pages.php");
                         }
-                    }
+                    }*/
 
                 }}
             ?>

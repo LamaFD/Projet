@@ -20,4 +20,6 @@ function administratorIsUserConnected() {
 function redirect($url) {
     header("Location: $url");
 }
+
+
 ?>

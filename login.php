@@ -48,9 +48,11 @@ session_start();
                 redirect("accueil.php");
             }
             else if ($curseur->rowCount() == 0)
-            {
-                echo "Vous n'etes pas inscrit !";
-            }
+            {?>
+                <div class="alert alert-danger" role="alert">
+                <strong>Warning!</strong> Vous n'etes pas inscrit
+                </div>
+            <?php }
             }}
         ?>
     

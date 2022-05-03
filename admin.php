@@ -28,11 +28,13 @@ session_start();
         ?>
             <h3 class="text-primary" ><?=$tuple["titre"]?></h3>
             <p><?=$tuple["resume_histoire"]?></p>
-            <p>Nombre de fois joué : <?=$tuple["nbr_joue"]?> </p>
             <p>Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </p>
-            <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?titre=".$tuple["titre"]?>>
-            <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?titre=".$tuple["titre"]?>>
-
+            <p>Nombre de fois joué : <?=$tuple["nbr_joue"]?> </p>
+            <p> Taux de réussite : <?=($tuple["nbr_reussites"]/$tuple["nbr_vie"])*100?> </p>
+            <form method="POST">
+            <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
+            <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
+            </form>
         <?php
         }
         ?>
