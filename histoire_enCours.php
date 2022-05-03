@@ -6,7 +6,7 @@ session_start();
 
 <!doctype html>
 <html>
-
+<link href="lib/css/feuillestyle3.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -24,7 +24,7 @@ session_start();
             if($vie==0) // On affiche le contenu de la page sans les choix
             {?>
                 <h3><?=$tuple["page_titre"]?></a></h3>
-                <p><?=$tuple["texte"]?></p>
+                <p><span class="presentation"><?=$tuple["texte"]?></span></p>
                 <p>Nombre de vies restants : <?=$vie?></p>
                 Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin ! </br>
                 <form method="POST">
@@ -36,14 +36,14 @@ session_start();
             else // On affiche le contenu de la page avec les choix 
             {?>
                 <h3><?=$tuple["page_titre"]?></a></h3>
-                <p><?=$tuple["texte"]?></p>
+                <p><span class="presentation"><?=$tuple["texte"]?></span></p>
                 
-                <form method="POST">
+                <form method="POST" class="form2">
                 <input type=hidden name="vie" value=$vie>
                 <input type="submit" name="id_page"  value=<?="Choix 1 :". $tuple["choix_1_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_1"]."&vie=".$vie?> >
                 <input type="submit" name="id_page"  value=<?="Choix 2 :".$tuple["choix_2_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_2"]."&vie=".$vie?> >
                 </form>
-                <p>Nombre de vies restants : <?=$vie?></p>
+                <p class="navbar-right presentation italique">Nombre de vies restantes : <?=$vie?></p>
                 
             <?php
             }}}

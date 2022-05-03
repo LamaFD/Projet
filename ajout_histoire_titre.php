@@ -5,13 +5,13 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle2.css" rel="stylesheet">
+<link href="lib/css/feuillestyle3.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 
 <body>
     <main class="container">
-    <form method="POST">
+    <form class="text-center" method="POST">
     <h3>Informations générales sur votre histoire</h3>
         <table>
              <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35"/></td></tr>

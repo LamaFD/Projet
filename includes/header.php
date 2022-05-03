@@ -8,15 +8,7 @@
             <span > <img src="images/dragon.PNG" alt="Dessin d'un dragon" width=28 /> </span> <span class="Titre"> My Story</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-target">
-            <?php if (isUserConnected()) {
-                    if(administratorIsUserConnected()){ ?>
-                <ul class="nav navbar-nav">
-                    <li><a href="admin.php"><span class="Titre">Mode admin</span></a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                        <li><a href="ajout_histoire_titre.php"><span class="Titre">Créer une histoire</span></a></li>
-                    </ul>
-            <?php }} ?>
+            
 
                 <?php if (isUserConnected()) { ?>
                         <ul  class="nav navbar-nav navbar-right">
@@ -27,6 +19,15 @@
                             <li><a href="login.php"><span class=""> <img src="images/casque.PNG" alt="Dessin d'un casque de chevalier" width=38 /> </span><span class="Titre">Se connecter</span></a></li>
                         </ul>
                 <?php } ?>
+                <?php if (isUserConnected()) {
+                    if(administratorIsUserConnected()){ ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="admin.php"><span > <img src="images/modif.PNG" alt="Dessin d'un dragon" width=36 /> </span><span class="Titre">Mode admin</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="ajout_histoire_titre.php"><span > <img src="images/crayon.PNG" alt="Dessin d'un dragon" width=22 /> </span><span class="Titre">Créer une histoire</span></a></li>
+                    </ul>
+            <?php }} ?>
         </div>
     </div>
 </nav>
