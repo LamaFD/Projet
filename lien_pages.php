@@ -5,11 +5,13 @@ session_start();
 
 <!doctype html>
 <html>
+<link href="lib/css/feuillestyle4.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
 
 <div class="container">
+<h1 class="text-center"><span class="Titre">Ajoutez les liens entre vos paragraphes</span></h1>
     <?php 
     if($BDD) {
         $id_histoire =$_SESSION["id_histoire"];
@@ -19,7 +21,7 @@ session_start();
         $curseur->execute(array($id_histoire));
         }
         ?>
-        <form method="POST">
+        <form class="text-center" method="POST">
         <?php
         while($tuple = $curseur->fetch()) {
         $nb_choix=1; // remise à 1 le nombre de choix 

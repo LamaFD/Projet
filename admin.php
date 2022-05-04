@@ -6,7 +6,7 @@ session_start();
 
 <!doctype html>
 <html>
-
+<link href="lib/css/feuillestyle4.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -34,12 +34,12 @@ session_start();
         }
         
         ?>
-            <h3 class="text-primary" ><?=$tuple["titre"]?></h3>
-            <p><?=$tuple["resume_histoire"]?></p>
-            <p>Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </p>
-            <p>Nombre de fois joué : <?=$tuple["nbr_joue"]?> </p>
-            <p> Taux de réussite : <?=$taux?> </p>
-            <form method="POST">
+            <h3 class="text-primary" ><span class="Titre"><?=$tuple["titre"]?></span></h3>
+            <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
+            <p><span class="presentation">Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </span></p>
+            <p><span class="presentation">Nombre de fois joué : <?=$tuple["nbr_joue"]?></span> </p>
+            <p> <span class="presentation">Taux de réussite : <?=$taux?></span> </p>
+            <form class="text-center" method="POST">
             <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
             <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
             <input type="submit" name="supprime" value="Supprimer" formaction=<?="Supprime_histoire.php?id_histoire=".$tuple["id_histoire"]?>>

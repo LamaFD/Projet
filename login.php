@@ -6,7 +6,7 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle3.css" rel="stylesheet">
+<link href="lib/css/feuillestyle4.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <h1 class="text-center"><span class="Titre">Connexion</span></h1>
@@ -14,7 +14,7 @@ session_start();
             <br/>
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
-        Etes vous un admin ?<br/>
+        <span class="presentation">Etes vous un admin ?</span><br/>
         <input type="radio" name="AdminOui" id="AdminOui">
         <label for="AdminOui">Oui</label><br/>
         <input type="radio" name="AdminNon" id="AdminNon">

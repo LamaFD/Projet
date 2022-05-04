@@ -49,6 +49,13 @@ input{
     border : 2px solid rgb(60, 113, 101);
     border-radius:7px;
 }
+select{
+    background-color:  rgb(255, 255, 255);
+    color :  rgb(68, 100, 108);
+    margin: 15px;
+    border : 2px solid rgb(60, 113, 101);
+    border-radius:7px;
+}
 textarea{
     background-color:  rgb(255, 255, 255);
     color :  rgb(68, 100, 108);
@@ -61,13 +68,6 @@ button {
     border : 2px solid rgb(60, 113, 101);
     border-radius:5px;
 }
-input[type=text]:focus {
-    background-color: rgba(170, 170, 170, 0.755);
-}
-input[type=password]:focus {
-    background-color: rgba(170, 170, 170, 0.755);
-}
 .italic{
     font-style:italic;
 }
-

@@ -5,10 +5,10 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle2.css" rel="stylesheet">
+<link href="lib/css/feuillestyle4.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
-
+<h1 class="text-center"><span class="Titre">Informations générales sur votre histoire</span></h1>
 <?php 
         $id_histoire = $_GET["id_histoire"];
 
@@ -34,8 +34,7 @@ session_start();
 
 <body>
     <main class="container">
-        <form method="POST">
-        <h3>Informations générales sur votre histoire</h3>
+        <form class="text-center"method="POST">
         <table>
             <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35" value=<?= $Titre ?>></td></tr>
             <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume" value=<?= $Resume ?>></textarea><br/></td></tr>

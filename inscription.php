@@ -15,7 +15,7 @@ session_start();
         <form class="text-center" method="POST">
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="35"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="35"></br>
-        <input type="password" name="mdp2" id="mdp2" placeholder="Validez votre mot de passe" require size="35"></br>
+        <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez votre mot de passe" require size="35"></br>
         
         <button type="submit" >S'inscrire</button>
         <button type="reset">Effacer</button><br/>

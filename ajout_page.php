@@ -5,23 +5,25 @@ session_start();
 
 <!doctype html>
 <html>
+<link href="lib/css/feuillestyle4.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
     
     <div class="container">
-        <form method="POST">
+    <h1 class="text-center"><span class="Titre">Ecrivez votre histoire</span></h1>
+        <form class="text-center" method="POST">
 
-                <label for="titre_page"> Titre de votre page : </label><br/><input type="text" name="titre_page" id="titre_page" size="35" require/></br>
-                <label for="modif_vie"> Modification du vie : </label><br/><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
-                <label for="nbr_choix"> Nombre de choix associés à cette page : </label><br/><input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
-                <label for="page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="page" id="page" require></textarea><br/>
+                <label for="titre_page"> Titre de votre page : </label><input type="text" name="titre_page" id="titre_page" size="35" require/></br>
+                <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
+                <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
+                <label for="page" class="margin-left"> Votre paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id="page" require></textarea><br/>
                 <input type="radio" name="Premier_page" id="Premier_page">
-                <label for="Premier_page">Est la premiere page</label><br/> 
+                <label for="Premier_page">Première page</label>
                 <input type="radio" name="fin_chemin" id="fin_chemin">
-                <label for="fin_chemin">Est une fin</label><br/>  
+                <label for="fin_chemin">Dernière page</label><br/>  
                 <button type="submit" name="ajout">Ajouter une page</button>
-                <button type="submit" name="finit">Fini</button>  
+                <button type="submit" name="finit">Fin</button>  
             
             <?php
                 if(isset($_POST["ajout"]) || isset($_POST["finit"]))
@@ -84,7 +86,7 @@ session_start();
                                 if(!empty($tuple["id_premiere_page"]))
                                 {?>
                                     <div class="alert alert-secondary" role="alert">
-                                    Vous avez deja defini une premiere page à cette histoire
+                                    Vous avez déjà défini la premiere page de cette histoire
                                     </div>
                                 <?php }
                                 else
@@ -121,7 +123,7 @@ session_start();
                         if(empty($tuple["id_premiere_page"]))
                         {?>
                             <div class="alert alert-danger" role="alert">
-                            <strong>Warning !</strong> Votre derniere page a été rajouté mais vous pouvez pas finir la creation des page sans avoir rajouter la premiere page !
+                            <strong>Warning !</strong> Votre dernière page a bien été rajoutée mais vous ne pouvez pas finir la création de votre histoire sans avoir défini la première page de cette dernière !
                             </div>
                         <?php }
                         else
