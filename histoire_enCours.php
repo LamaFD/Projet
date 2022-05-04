@@ -49,8 +49,19 @@ session_start();
                 
                 <form method="POST" class="form2">
                 <input type=hidden name="vie" value=$vie>
+                
                 <?php 
-                    while($nb_choix<=$tuple[""])
+                    // afficher les choix :
+                    // chercher les choix 
+                    $maRequete = "SELECT * FROM `choix` WHERE id_page_associe=? ORDER BY id_choix";
+                    $curseur = $BDD->prepare($maRequete);
+                    $curseur->execute(array($tuple["id_page"]));
+                    while($tuple = $curseur->fetch()) {
+                    while($nb_choix<=$tuple["nbr_choix"])
+                    {?>
+                        <input type="submit" name=<?="choix_"?>  value=<?="Choix 1 :". $tuple["choix_1_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_1"]."&vie=".$vie?> >
+                    <?php }
+                    }
                 ?>
                 <input type="submit" name="id_page"  value=<?="Choix 1 :". $tuple["choix_1_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_1"]."&vie=".$vie?> >
                 <input type="submit" name="id_page"  value=<?="Choix 2 :".$tuple["choix_2_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_2"]."&vie=".$vie?> >
