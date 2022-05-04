@@ -49,10 +49,13 @@ session_start();
                 
                 <form method="POST" class="form2">
                 <input type=hidden name="vie" value=$vie>
+                <?php 
+                    while($nb_choix<=$tuple[""])
+                ?>
                 <input type="submit" name="id_page"  value=<?="Choix 1 :". $tuple["choix_1_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_1"]."&vie=".$vie?> >
                 <input type="submit" name="id_page"  value=<?="Choix 2 :".$tuple["choix_2_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_2"]."&vie=".$vie?> >
                 </form>
-                <p class="navbar-right presentation italique">Nombre de vies restantes : <?=$vie?></p>
+                <p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
                 
             <?php
             }}}

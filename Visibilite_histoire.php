@@ -26,7 +26,7 @@ if($BDD) {
         $req = $BDD->prepare('UPDATE  histoire SET Cache=:_cache WHERE id_histoire=:_id');
         $req->execute(array(
             ':_cache' => 0,
-            '_id' => $id_histoire,
+            '_id' => $id_histoire
             ));   
     }
     }}
