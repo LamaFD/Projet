@@ -16,7 +16,9 @@ session_start();
                 <label for="modif_vie"> Modification du vie : </label><br/><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
                 <label for="page"> Votre paragraphe : </label><br/><textarea cols='90' rows='20' name="page" id="page" require></textarea><br/>
                 <input type="radio" name="Premier_page" id="Premier_page">
-                <label for="Premier_page">Est la premiere page</label><br/>   
+                <label for="Premier_page">Est la premiere page</label><br/> 
+                <input type="radio" name="fin" id="fin">
+                <label for="fin">Est est une fin</label><br/>  
                 
             <input type="submit" value="Ajouter une page" formaction="ajout_page.php"/>
             <input type="submit" value="Fini" formaction="lien_pages.php"/>

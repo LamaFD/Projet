@@ -21,12 +21,21 @@ session_start();
             while($tuple = $curseur->fetch()) {
             // update etat du vie
             $vie=$_GET["vie"]+$tuple["modif_vie"];
-            if($vie==0) // On affiche le contenu de la page sans les choix
+            $fini=$tuple["Fin"];
+            if($vie==0 || $fini==0) // On affiche le contenu de la page sans les choix
             {?>
                 <h3><?=$tuple["page_titre"]?></a></h3>
                 <p><span class="presentation"><?=$tuple["texte"]?></span></p>
                 <p>Nombre de vies restants : <?=$vie?></p>
-                Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin ! </br>
+                <?php if($fini==0)
+                { 
+                   echo "Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin !" ;
+                } 
+                else
+                {
+                    echo "Vous etes arrivés à la fin de l'histoire !" ;
+                }?>
+                </br>
                 <form method="POST">
                 <input type="submit" name="Fin" value= "FINI" formaction="histoire_fin.php">
                 </form>
