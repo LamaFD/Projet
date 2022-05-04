@@ -7,20 +7,20 @@ session_start();
 
 <!doctype html>
 <html>
-
+<link href="lib/css/feuillestyle3.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
-<h2 class="text-center">Inscription</h2>
-    <main class="well">
+<h1 class="text-center"><span class="Titre">Inscription</span></h1>
+    
         <form class="text-center" method="POST">
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require></br>
-        <input type="password" name="mdp2" id="mdp2" placeholder="Remettez votre mot de passe" require></br>
+        <input type="password" name="mdp2" id="mdp2" placeholder="Valider votre mot de passe" require></br>
         
         <button type="submit" >S'inscrire</button>
         <button type="reset">Effacer</button><br/>
         </form>
-    </main>
+    
 
     <?php
         if(!empty($_POST) && !empty($_POST["mdp2"]))
@@ -38,7 +38,7 @@ session_start();
                 if ($curseur->rowCount() == 1) {
                     ?>
                     <div class="alert alert-warning" role="alert">
-                    <strong>Warning!</strong> Vous avez deja un compte !
+                    <strong>Warning !</strong> Vous avez deja un compte !
                     </div>
                     <?php
                 }

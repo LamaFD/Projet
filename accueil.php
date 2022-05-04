@@ -28,7 +28,7 @@ session_start();
             if($tuple["Cache"]==0)
             {
         ?>
-            <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
+            <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 ><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
             <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
             <!--<table>
                 <tr>
