@@ -54,18 +54,14 @@ session_start();
         <?php 
             if(isset($_POST["submit"]))
             {
-                echo "hi";
                 $maReq = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
                 $curseur_update = $BDD->prepare($maReq);
                 $curseur_update->execute(array($id_histoire));
                 while($tuple = $curseur_update->fetch())
                 {
-                    echo "enter here";
                     $nb_choix=1;
                     While($nb_choix<=$tuple["nbr_choix"]) 
                     {
-                        echo $_POST["choix_".$nb_choix."_".$tuple["id_page"]];
-                        echo $_POST["choix_".$nb_choix."_texte"];
                         $req = $BDD->prepare('INSERT INTO `choix` (`id_page_associe`,`id_page_suivante`,`texte_choix`) VALUES (:_id_page_associe, :_id_page_suivante, :_texte_choix)' );
                         $req->execute(array(
                                 '_id_page_associe'=> $tuple["id_page"],
@@ -75,8 +71,7 @@ session_start();
                         $nb_choix++;
                     }
                 }
-                
-                
+                redirect("accueil.php");
             }
         
         ?>

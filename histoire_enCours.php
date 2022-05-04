@@ -18,7 +18,7 @@ session_start();
             $maRequete = "SELECT * FROM `page` WHERE id_page=? ORDER BY id_page";
             $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($id_page));
-            while($tuple = $curseur->fetch()) {
+            $tuple = $curseur->fetch();
             // update etat du vie
             $vie=$_GET["vie"]+$tuple["modif_vie"];
             $fini=$tuple["Fin"];
@@ -53,21 +53,19 @@ session_start();
                 <?php 
                     // afficher les choix :
                     // chercher les choix 
-                    $maRequete = "SELECT * FROM `choix` WHERE id_page_associe=? ORDER BY id_choix";
-                    $curseur = $BDD->prepare($maRequete);
-                    $curseur->execute(array($tuple["id_page"]));
-                    while($tuple = $curseur->fetch()) {
-                    while($nb_choix<=$tuple["nbr_choix"])
+                    $maRequete_choix = "SELECT * FROM `choix` WHERE id_page_associe=? ORDER BY id_choix";
+                    $curseur_choix = $BDD->prepare($maRequete_choix);
+                    $curseur_choix->execute(array($tuple["id_page"]));
+                    while($choix = $curseur_choix->fetch()) 
                     {?>
-                        <input type="submit" name=<?="choix_"?>  value=<?="Choix 1 :". $tuple["choix_1_texte"] ?> formaction=<?="histoire_enCours.php?id_page=".$tuple["choix_1"]."&vie=".$vie?> >
+                        <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value=<?="choix_".$choix["texte_choix"]?> formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie?> >
                     <?php }
-                    }
                 ?>
                 </form>
                 <p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
                 
             <?php
-            }}}
+            }}
             ?>
     </div>
 
