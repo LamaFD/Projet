@@ -22,7 +22,7 @@ session_start();
             // update etat du vie
             $vie=$_GET["vie"]+$tuple["modif_vie"];
             $fini=$tuple["Fin"];
-            if($vie==0 || $fini==1) // On affiche le contenu de la page sans les choix
+            if($vie<=0 || $fini==1) // On affiche le contenu de la page sans les choix
             {?>
                 <h3><?=$tuple["page_titre"]?></a></h3>
                 <p><span class="presentation"><?=$tuple["texte"]?></span></p>
