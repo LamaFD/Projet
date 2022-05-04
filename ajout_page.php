@@ -20,12 +20,11 @@ session_start();
                 <label for="Premier_page">Est la premiere page</label><br/> 
                 <input type="radio" name="fin" id="fin">
                 <label for="fin">Est une fin</label><br/>  
-                
-            <input type="submit" value="Ajouter une page" formaction="ajout_page.php"/>
-            <input type="submit" value="Fini" formaction="lien_pages.php"/>
+                <button type="submit" name="ajout">Ajouter une page</button>
+                <button type="submit" name="finit">Fini</button>  
             
             <?php
-                if(!empty($_POST))
+                if(isset($_POST["ajout"]) || isset($_POST["finit"]))
                 { 
                     $titre_page =$_POST["titre_page"];
                     $modif_vie=$_POST["modif_vie"];
@@ -37,7 +36,6 @@ session_start();
                     $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND modif_vie=? AND nbr_choix=? AND texte=? AND id_histoire=?";
                     $curseur = $BDD->prepare($maRequete);
                     $curseur->execute(array($titre_page,$modif_vie,$nbr_choix,$page,$id_histoire));
-                    $tuple_page = $curseur->fetch();
                     if ($curseur->rowCount() == 1) {
                     ?>
                         <div class="alert alert-warning" role="alert">
@@ -57,7 +55,26 @@ session_start();
                         '_id_histoire' =>$id_histoire
                         )); 
 
-                        if(!empty($_POST["Premier_page"]))
+                        // si la page est la fin d'un chemin
+                        if(isset($_POST["fin"]))
+                        { 
+                            echo "here";
+                            // on retrouve l'id de la page qui vient d'etre creer
+                            $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND modif_vie=? AND nbr_choix=? AND texte=? AND id_histoire=?";
+                            $curseur = $BDD->prepare($maRequete);
+                            $curseur->execute(array($titre_page,$modif_vie,$nbr_choix,$page,$id_histoire));
+                            $tuple_page = $curseur->fetch();
+                            // on update Fin
+                            $req = $BDD->prepare('UPDATE  `page` SET Fin=:_fin WHERE id_histoire=:_id');
+                            $req->execute(array(
+                                '_fin' => 1,
+                                '_id' => $id_histoire
+                                ));
+                            
+                            redirect("lien_pages.php");
+                        }
+
+                        if(isset($_POST["Premier_page"]))
                         {
                             // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                             $maRequete2 = "SELECT * FROM histoire WHERE id_histoire=?";
@@ -73,6 +90,11 @@ session_start();
                             <?php }
                             else
                             {
+                                // on retrouve l'id de la page qui vient d'etre creer
+                                $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND modif_vie=? AND nbr_choix=? AND texte=? AND id_histoire=?";
+                                $curseur = $BDD->prepare($maRequete);
+                                $curseur->execute(array($titre_page,$modif_vie,$nbr_choix,$page,$id_histoire));
+                                $tuple_page = $curseur->fetch();
                                 // on associe l'id de la page comme etant l'id de la premiere page dans l'histoire actuelle
                                 $req = $BDD->prepare('UPDATE `histoire` SET `id_premiere_page` = :_id_premiere_page WHERE id_histoire = :_id');
                                 $req->execute(array(
@@ -80,11 +102,15 @@ session_start();
                                 '_id'=> $id_histoire
                                 )); 
                             }
-                            
                         }
                     }
 
-                    /*if(!empty($_POST["Fini"]))
+                    if(isset($_POST["ajout"])) // on veut simplement ajouter mais qu'on veut continuer à inserer des pages
+                    {
+                        redirect("ajout_page.php");
+                    }
+
+                    if(isset($_POST["finit"])) // si on a fini de creer des pages 
                     {
                         // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                         $maRequete3 = "SELECT * FROM histoire WHERE id_histoire=?";
@@ -94,15 +120,15 @@ session_start();
                         // on verifie si la premiere page est deja defini
                         if(empty($tuple["id_premiere_page"]))
                         {?>
-                            <div class="alert alert-secondary" role="alert">
-                            Vous devez d'abord creer une page de depart de l'histoire !
+                            <div class="alert alert-danger" role="alert">
+                            <strong>Warning !</strong> Votre derniere page a été rajouté mais vous pouvez pas finir la creation des page sans avoir rajouter la premiere page !
                             </div>
                         <?php }
                         else
                         {
                             redirect("lien_pages.php");
                         }
-                    }*/
+                    }
 
                 }}
             ?>
