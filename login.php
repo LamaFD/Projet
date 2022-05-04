@@ -12,8 +12,8 @@ session_start();
 <h1 class="text-center"><span class="Titre">Connexion</span></h1>
         <form class="text-center" method="POST">
             <br/>
-        <input type="text" name="login" id="login" placeholder="Entrez votre login" require></br>
-        <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require></br>
+        <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
+        <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
         Etes vous un admin ?<br/>
         <input type="radio" name="AdminOui" id="AdminOui">
         <label for="AdminOui">Oui</label><br/>
@@ -21,7 +21,7 @@ session_start();
         <label for="AdminNon">Non</label><br/>
         <button type="submit">Se connecter</button>
         <button type="reset">Effacer</button><br/>
-        <input type="submit" name="inscription" value="inscription" formaction="inscription.php">
+        <input type="submit" name="inscription" value="Inscription" formaction="inscription.php">
         </form>
 
 

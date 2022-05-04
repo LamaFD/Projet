@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: rgba(114, 188, 171, 0.319);
+    background-color: rgba(129, 188, 114, 0.319); 
 }
 
 .Titre{
@@ -48,9 +48,10 @@ input{
     margin: 15px;
     border : 2px solid rgb(60, 113, 101);
     border-radius:7px;
+
 }
 button {
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(255, 255, 255);
     border : 2px solid rgb(60, 113, 101);
     border-radius:5px;
 }
@@ -63,3 +64,4 @@ input[type=text]:focus {
 .italic{
     font-style:italic;
 }
+
