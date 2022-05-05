@@ -13,35 +13,48 @@ session_start();
 <body>
     <div class="container">
         <?php 
-        // vérifie qu’on est bien connecté à la base de données
         if($BDD) {
-        // On enregistre la requête SQL dans une variable
-        $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
-        // On envoie la requête “à travers la connexion” et on récupère le résultat
-        $curseur = $BDD->query($maRequete);
-        }
-
-        // la méthode fetch positionne le curseur sur une ligne de la requête
-        // et passe à la ligne suivante à chaque appel
-        while($tuple = $curseur->fetch()) {
-        // On affiche le contenu de la ligne
-            if($tuple["Cache"]==0)
+            $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
+            $curseur = $BDD->query($maRequete);
+            while($tuple = $curseur->fetch())
             {
-        ?>
-            <h3><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 ><span class="Titre"><?=$tuple["titre"]?></span></a></h3>
-            <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
-            <!--<table>
-                <tr>
-                <td><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin illustrant l'histoire" width=42></td><td><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><h3><span class="Titre"><?=$tuple["titre"]?></span></h3></a></td></tr>
-            <tr><td></td><td><span class="presentation"><?=$tuple["resume_histoire"]?></span></td></tr>
-        </table>-->
+                if($tuple["Cache"]==0)
+                {
+                    print_r($tuple);////////////////////////////////////////////////
+                    ?>
+                <h3><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 ><span class="Titre"><?=$tuple["titre"]?></span></h3>
+                <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
+                <!--<table>
+                    <tr>
+                    <td><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin illustrant l'histoire" width=42></td><td><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><h3><span class="Titre"><?=$tuple["titre"]?></span></h3></a></td></tr>
+                <tr><td></td><td><span class="presentation"><?=$tuple["resume_histoire"]?></span></td></tr>
+            </table>-->
+                <form>
+                    <input type="submit" name="commencer" value="Commencer" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
+                    <?php 
+                    if(isUserConnected())
+                    {
+                        $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
+                        $curs_hist = $BDD->prepare($req_verifier);
+                        $curs_hist->execute(array($tuple["id_histoire"],$_SESSION['id_user']));
+                        if($curs_hist->rowCount() == 1)
+                        {
+                        ?>
+                        <input type="submit" name="continuer" value="Continuer">
+                    <?php }
+                    }
+                    ?>
+                </form>
+            <?php }}?>
         <?php
-        }}
+            if(isset($_POST))
+            {
+                
+            }
+        }
         ?>
         
     </div>
 
 </body>
-
-
 </html>

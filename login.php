@@ -43,8 +43,10 @@ session_start();
             $maRequete = "SELECT * FROM user WHERE user_login=? AND user_mdp=? AND user_role=?";
             $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($login,$mdp,$admin));
+            $tuple = $curseur->fetch();
             if ($curseur->rowCount() == 1) {
                 $_SESSION['role']=$admin;
+                $_SESSION['id_user']= $tuple["id_user"];
                 redirect("accueil.php");
             }
             else if ($curseur->rowCount() == 0)

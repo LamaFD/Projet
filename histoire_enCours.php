@@ -19,6 +19,8 @@ session_start();
             $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($id_page));
             $tuple = $curseur->fetch();
+            // enregistrer l'id de l'histoire afin de pouvoir sauvgarder l'avancement
+            $id_histoire = $tuple["id_histoire"];
             // update etat du vie
             $vie=$_GET["vie"]+$tuple["modif_vie"];
             $fini=$tuple["Fin"];
@@ -51,13 +53,16 @@ session_start();
                 <input type=hidden name="vie" value=$vie>
                 
                 <?php 
-                    // afficher les choix :
                     // chercher les choix 
                     $maRequete_choix = "SELECT * FROM `choix` WHERE id_page_associe=? ORDER BY id_choix";
                     $curseur_choix = $BDD->prepare($maRequete_choix);
-                    $curseur_choix->execute(array($tuple["id_page"]));
+                    $curseur_choix->execute(array($id_page));
+                    // afficher les choix
+                    echo "ici";
                     while($choix = $curseur_choix->fetch()) 
-                    {?>
+                    {
+                        echo "here"////////////////////////////////////////////////////?>
+                        
                         <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value=<?="choix_".$choix["texte_choix"]?> formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie?> >
                     <?php }
                 ?>
@@ -67,6 +72,46 @@ session_start();
             <?php
             }}
             ?>
+
+            <?php // enregistrer l'avancement dans l'histoire?>
+            <?php if(isUserConnected())
+                    {?>
+            <form method="POST">
+                <button type="submit" name="enregistrer">Marquer la page</button> 
+            </form>
+               <?php }
+               if(isset($_POST["enregistrer"]))
+               {
+                   // preparation de la requette permettant de verifier si l''histoire a deja été commencé par l'utilisateur
+                   $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
+                   $curs_hist = $BDD->prepare($req_verifier);
+                   $curs_hist->execute(array($id_histoire,$_SESSION['id_user']));
+                   if($curs_hist->rowCount() == 1)
+                   {
+                       // update les données deja disponible 
+                       $req_update = $BDD->prepare('UPDATE  historique SET vie_actuelle=:_vie AND id_page=:_page WHERE id_histoire=:_id_histoire AND id_user=:_id_user');
+                       $req_update->execute(array(
+                           ':_cache' => 0,
+                           '_id_histoire' => $id_histoire,
+                           '_id_user' => $_SESSION['id_user']
+                           ));
+               
+                   }
+                   else
+                   {
+                       // on ajoute une ligne dans la base qui contient les informations
+                       $req_ajout = $BDD->prepare('INSERT INTO `historique` (`id_user`, `id_histoire`,`id_page`,`vie_actuelle`) VALUES (:_user, 
+                       :_histoire,:_page,:_vie)');
+                       $req_ajout->execute(array(
+                       '_user' => $_SESSION['id_user'], 
+                       '_histoire' => $id_histoire,
+                       '_page' => $id_page,
+                       '_vie' => $vie
+                       )); 
+                   }
+               }
+            ?>
+
     </div>
 
 

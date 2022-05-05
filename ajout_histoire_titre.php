@@ -30,7 +30,15 @@ session_start();
         $titre =$_POST["titre"];
         $resume = $_POST["resume"];
         $nbr_vie =$_POST["nbr_vie"];
-        $image=$_POST["image"];
+        if($_POST["image"]!=NULL)
+        {
+            $image=$_POST["image"];
+        }
+        else
+        {
+            $image="livre.png";
+        }
+        
 
         if($BDD) {
             $maRequete = "SELECT * FROM histoire WHERE titre=? AND resume_histoire=? AND nbr_vie=?";

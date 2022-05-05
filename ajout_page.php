@@ -109,7 +109,7 @@ session_start();
 
                     if(isset($_POST["ajout"])) // on veut simplement ajouter mais qu'on veut continuer à inserer des pages
                     {
-                        //redirect("ajout_page.php");
+                        redirect("ajout_page.php");
                     }
 
                     if(isset($_POST["finit"])) // si on a fini de creer des pages 
@@ -128,7 +128,7 @@ session_start();
                         <?php }
                         else
                         {
-                            //redirect("lien_pages.php");
+                            redirect("lien_pages.php");
                         }
                     }
 
