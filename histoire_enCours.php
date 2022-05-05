@@ -91,7 +91,8 @@ session_start();
                        // update les données deja disponible 
                        $req_update = $BDD->prepare('UPDATE  historique SET vie_actuelle=:_vie AND id_page=:_page WHERE id_histoire=:_id_histoire AND id_user=:_id_user');
                        $req_update->execute(array(
-                           ':_cache' => 0,
+                           '_vie' => $vie,
+                           '_page' => $id_page,
                            '_id_histoire' => $id_histoire,
                            '_id_user' => $_SESSION['id_user']
                            ));
