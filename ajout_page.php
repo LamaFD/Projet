@@ -23,9 +23,11 @@ session_start();
                 <input type="radio" name="fin_chemin" id="fin_chemin">
                 <label for="fin_chemin">Dernière page</label><br/>  
                 <button type="submit" name="ajout">Ajouter une page</button>
-                <button type="submit" name="finit">Fin</button>  
+                <button type="submit" name="finit">Fin</button> 
             
-            <?php
+        </form>
+    </div>
+    <?php
                 if(isset($_POST["ajout"]) || isset($_POST["finit"]))
                 { 
                     if(!empty($_POST["titre_page"]))
@@ -134,8 +136,5 @@ session_start();
 
                 }}
             ?>
-            
-</form>
-    </div>
 </body>
 </html>
