@@ -39,7 +39,7 @@ session_start();
                 }?>
                 </br>
                 <form method="POST">
-                <input type="submit" name="Fin" value= "FINI" formaction="histoire_fin.php">
+                <input type="submit" name="Fin" value= "FINI" formaction="histoire_recap.php">
                 </form>
                 
             <?php }
@@ -88,16 +88,13 @@ session_start();
                    {
                         $tuple = $curs_hist->fetch();
                         $id_historique=$tuple["id_historique"];
-                       echo $id_historique;
-                       echo $_GET["vie"]; 
-                       // update les données deja disponible 
-                       $req_update = $BDD->prepare('UPDATE  historique SET vie_actuelle=:_vie AND id_page=:_page WHERE id_historique=:_historique');
-                       $req_update->execute(array(
-                           '_vie' => $_GET["vie"],
-                           '_page' => $id_page,
-                           '_historique' => $id_historique
-                           ));
-               
+                        // update les données deja disponible 
+                        $req_update = $BDD->prepare("UPDATE  historique SET vie_actuelle=:_vie , id_page=:_page WHERE id_historique=:_historique");
+                        $req_update->execute(array(
+                            '_vie' => $_GET["vie"],
+                            '_page' => $id_page,
+                            '_historique' => $id_historique
+                            ));
                    }
                    else
                    {
