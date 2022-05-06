@@ -23,8 +23,8 @@ session_start();
                     ?>
                 <h3><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 ><span class="Titre"><?=$tuple["titre"]?></span></h3>
                 <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
-                <form>
-                <input type="submit" value="Lire" formaction=<?= "histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]  ?>/>  
+                <form method="POST">
+                <input type="submit" value="Lire" formaction=<?= "histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"] ?>>  
                     <?php 
                     if(isUserConnected())
                     {
@@ -35,7 +35,7 @@ session_start();
                         {
                         $historique = $curs_hist->fetch();
                         ?>
-                        <input type="submit" value="Continuer" formaction=<?="histoire_enCours.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"] ?>?>
+                        <input type="submit" value="Continuer" formaction=<?="histoire_enCours.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"] ?>>
                     <?php }
                     }
                     ?>

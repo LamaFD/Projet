@@ -58,12 +58,10 @@ session_start();
                     $curseur_choix = $BDD->prepare($maRequete_choix);
                     $curseur_choix->execute(array($id_page));
                     // afficher les choix
-                    echo "ici";
                     while($choix = $curseur_choix->fetch()) 
-                    {
-                        echo "here"////////////////////////////////////////////////////?>
+                    {?>
                         
-                        <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value=<?="choix_".$choix["texte_choix"]?> formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie?> >
+                        <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value="<?= $choix["texte_choix"] ?>" formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie?> >
                     <?php }
                 ?>
                 </form>
@@ -74,7 +72,7 @@ session_start();
             ?>
 
             <?php // enregistrer l'avancement dans l'histoire?>
-            <?php if(isUserConnected())
+            <?php if(isUserConnected()) // s'affiche seulement si l'utilisateur est connecté
                     {?>
             <form method="POST">
                 <button type="submit" name="enregistrer">Marquer la page</button> 
@@ -88,13 +86,16 @@ session_start();
                    $curs_hist->execute(array($id_histoire,$_SESSION['id_user']));
                    if($curs_hist->rowCount() == 1)
                    {
+                        $tuple = $curs_hist->fetch();
+                        $id_historique=$tuple["id_historique"];
+                       echo $id_historique;
+                       echo $_GET["vie"]; 
                        // update les données deja disponible 
-                       $req_update = $BDD->prepare('UPDATE  historique SET vie_actuelle=:_vie AND id_page=:_page WHERE id_histoire=:_id_histoire AND id_user=:_id_user');
+                       $req_update = $BDD->prepare('UPDATE  historique SET vie_actuelle=:_vie AND id_page=:_page WHERE id_historique=:_historique');
                        $req_update->execute(array(
-                           '_vie' => $vie,
+                           '_vie' => $_GET["vie"],
                            '_page' => $id_page,
-                           '_id_histoire' => $id_histoire,
-                           '_id_user' => $_SESSION['id_user']
+                           '_historique' => $id_historique
                            ));
                
                    }
@@ -107,7 +108,7 @@ session_start();
                        '_user' => $_SESSION['id_user'], 
                        '_histoire' => $id_histoire,
                        '_page' => $id_page,
-                       '_vie' => $vie
+                       '_vie' => $_GET["vie"]
                        )); 
                    }
                }

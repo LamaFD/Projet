@@ -29,7 +29,7 @@ session_start();
     </div>
     <?php
                 if(isset($_POST["ajout"]) || isset($_POST["finit"]))
-                { 
+                {
                     if(!empty($_POST["titre_page"]))
                     {
                         $titre_page =$_POST["titre_page"];
@@ -108,8 +108,9 @@ session_start();
                             }
                         }
                     }
+                    }
 
-                    if(isset($_POST["ajout"])) // on veut simplement ajouter mais qu'on veut continuer à inserer des pages
+                    if(isset($_POST["ajout"])) // on veut ajouter une autre page
                     {
                         redirect("ajout_page.php");
                     }
@@ -119,7 +120,7 @@ session_start();
                         // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                         $maRequete3 = "SELECT * FROM histoire WHERE id_histoire=?";
                         $curseur = $BDD->prepare($maRequete3);
-                        $curseur->execute(array($id_histoire));
+                        $curseur->execute(array($_SESSION["id_histoire"]));
                         $tuple = $curseur->fetch();
                         // on verifie si la premiere page est deja defini
                         if(empty($tuple["id_premiere_page"]))
@@ -134,7 +135,7 @@ session_start();
                         }
                     }
 
-                }}
+                }
             ?>
 </body>
 </html>
