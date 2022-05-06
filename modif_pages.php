@@ -27,10 +27,10 @@ session_start();
             $nb_choix =$tuple["nbr_choix"];
             $fin = $tuple["Fin"];
             ?>
-            <label for="titre_page"> Titre de la page : </label><input type="text" name="titre_page" id=<?="titre_page_".$id_page?> size="35" value=<?=$Titre_page?>></br>
-            <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id=<?="modif_vie_".$id_page?> size="35" value=<?=$modif_vie?>></br>
-            <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id=<?="nbr_choix_".$id_page?> size="35" value=<?=$nb_choix?>></br>
-            <label for="page" class="margin-left"> Le paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id=<?="page_".$id_page?> value=<?=$Text_page?>></textarea><br/>
+            <label for="titre_page"> Titre de la page : </label><input type="text" name="titre_page" id=<?="titre_page_".$id_page?> size="35" value="<?=$Titre_page?>"></br>
+            <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id=<?="modif_vie_".$id_page?> size="35" value="<?=$modif_vie?>"></br>
+            <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id=<?="nbr_choix_".$id_page?> size="35" value="<?=$nb_choix?>"></br>
+            <label for="page" class="margin-left"> Le paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id=<?="page_".$id_page?> value="<?=$Text_page?>"></textarea><br/>
             <input type="radio" name="Premier_page" id=<?="Premier_page_".$id_page?>>
             <label for="Premier_page">Première page</label>
             <input type="radio" name="fin_chemin" id=<?="fin_chemin_".$id_page?>>

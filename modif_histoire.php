@@ -28,13 +28,14 @@ session_start();
 
 <body>
     <main class="container">
-        <form class="text-center"method="POST">
+        <form class="text-center" method="POST">
         <table>
-            <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="35" value=<?= $Titre ?>></td></tr>
-            <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume" value=<?= $Resume ?>></textarea><br/></td></tr>
-            <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" value=<?= $nbr_vies ?>/></td></tr>
-            <input type="submit" name="continuer_modif" value="Continuer" formaction=<?="modif_pages.php?id_histoire=".$id_histoire?>>
+            <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="50" value="<?= $Titre ?>"></td></tr>
+            <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume"><?php echo $Resume;?></textarea><br/></td></tr>
+            <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" value="<?= $nbr_vies ?>"/></td></tr>
+            
         </table>
+        <input type="submit" name="continuer_modif" value="Continuer" formaction=<?="choix_page_modif.php?id_histoire=".$id_histoire?> class="text-center">
     </main>
 </form>
 </body>
