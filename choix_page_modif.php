@@ -22,7 +22,7 @@ session_start();
             while($tuple = $curseur->fetch())
             {?>
             
-            <a href=<?="modif_pages.php?id_page=".$tuple["id_page"]?>><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
+            <a href=<?="modif_page.php?id_page=".$tuple["id_page"]."&id_histoire=".$id_histoire?>><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
             
             <?php
             }
