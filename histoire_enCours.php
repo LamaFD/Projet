@@ -108,6 +108,12 @@ session_start();
                        '_vie' => $_GET["vie"]
                        )); 
                    }
+                   ?>
+                    <!-- affichage notif-->
+                    <div class="alert alert-info" role="alert">
+                    Votre avancement a bien été enregistré !
+                    </div>
+                   <?php
                }
             ?>
 
