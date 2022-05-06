@@ -10,7 +10,7 @@ session_start();
 <?php require_once "includes/header.php"; ?>
 <body>
 <div class="container">
-<h1 class="text-center"><span class="Titre">Informations générales sur votre histoire</span></h1>
+<h1 class="text-center"><span class="Titre">Quelle page voulez-vous modifier ? </span></h1>
 <?php 
         $id_histoire = $_GET["id_histoire"];
 
@@ -22,7 +22,7 @@ session_start();
             while($tuple = $curseur->fetch())
             {?>
             
-            <a href="modif_pages.php?id_histoire=".$id_histoire><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
+            <a href=<?="modif_pages.php?id_page=".$tuple["id_page"]?>><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
             
             <?php
             }
