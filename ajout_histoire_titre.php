@@ -34,7 +34,7 @@ session_start();
         $titre =$_POST["titre"];
         $resume = $_POST["resume"];
         $nbr_vie =$_POST["nbr_vie"];
-        if(isset($FILES["name"]))
+        if(isset($FILES["image"]))
         {
             $image=$_POST["image"];
             $tmpFile = $_FILES['image']['tmp_name'];

@@ -27,6 +27,7 @@ session_start();
         }
         
         ?>
+        <img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 >
             <h3 class="text-primary" ><span class="Titre"><?=$tuple["titre"]?></span></h3>
             <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
             <p><span class="presentation">Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </span></p>
