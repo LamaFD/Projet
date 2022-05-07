@@ -31,12 +31,13 @@ session_start();
         print_r($_FILES);
         print_r($_POST);
    
-        $titre =$_POST["titre"];
-        $resume = $_POST["resume"];
-        $nbr_vie =$_POST["nbr_vie"];
-        if(isset($FILES["image"]))
+        $titre =$_POST['titre'];
+        $resume = $_POST['resume'];
+        $nbr_vie =$_POST['nbr_vie'];
+        if(isset($_FILES['image']))
         {
-            $image=$_POST["image"];
+            $image=$_FILES['image']['name'];
+            if($image!=''){
             $tmpFile = $_FILES['image']['tmp_name'];
                 if (is_uploaded_file($tmpFile)) {
                 // upload movie image
@@ -44,12 +45,12 @@ session_start();
                 $uploadedFile = "images/$image2";
                 move_uploaded_file($_FILES['image']['tmp_name'], $uploadedFile);
                 }
+            }
+            else
+            {
+                $image='livre.png';
+            }
         }
-        else
-        {
-            $image="livre.png";
-        }
-        
 
         if($BDD) {
             $maRequete = "SELECT * FROM histoire WHERE titre=? AND resume_histoire=? AND nbr_vie=?";
