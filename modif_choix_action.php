@@ -7,9 +7,6 @@ if($BDD)
 {
     $id_histoire =$_POST["id_histoire"];
     $id_page =$_POST["id_page"];
-    print_r($_POST["choix_1_pageSuivante"]);
-    echo "next";
-    print_r($_POST["choix_2_pageSuivante"]);
     if(isset($_POST["Modifier"])) // si l'utilisateur veut confirmer ses modifications
     {
         $nb=1;
