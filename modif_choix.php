@@ -31,12 +31,12 @@ session_start();
                 $nb++;?>
                 <label for=<?="choix_".$nb?>> <?="Choix ".$nb?> </label>
                 <input type="text" name=<?="choix_".$nb."_texte"?> id=<?="choix_".$nb."_texte"?> size="35" value="<?= $choix["texte_choix"] ?>"/>
-                <select name=<?="choix_".$nb?> id=<?="choix_".$nb?> ?>">
+                <select name=<?="choix_".$nb."_pageSuivante"?> id=<?="choix_".$nb."_pageSuivante"?> value=<?= $choix["id_page_suivante"] ?>>
                     <?php 
                             // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages
                             $maRequete2 = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
                             $curseur2 = $BDD->prepare($maRequete2);
-                            $curseur2->execute(array($id_histoire));
+                            $curseur2->execute(array($_GET["id_histoire"]));
                             while($tuple2 = $curseur2->fetch()) 
                             {?>
                                 <option value=<?=$tuple2["id_page"]?>> <?=$tuple2["page_titre"]?> </option>
@@ -51,7 +51,7 @@ session_start();
                     $nb++;?>
                     <label for=<?="choix_".$nb?>> <?="Choix ".$nb?> </label>
                     <input type="text" name=<?="choix_".$nb."_texte"?> id=<?="choix_".$nb."_texte"?> size="35" value="<?= $choix["texte_choix"] ?>"/>
-                    <select name=<?="choix_".$nb?> id=<?="choix_".$nb?>>
+                    <select name=<?="choix_".$nb."_pageSuivante"?> id=<?="choix_".$nb."_pageSuivante"?>>
                         <?php 
                                 // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages
                                 $maRequete2 = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
@@ -68,6 +68,9 @@ session_start();
           <?php }
             
             ?>
+            <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?>>
+            <input type="hidden" id="id_page" name="id_page" value=<?=$id_page?>>
+            <input type="hidden" id="nbr_choix_actuelle" name="nbr_choix_actuelle" value=<?=$nb_choix?>>
             <button type="submit" name="Modifier">Confirmer les modifications</button>
             <button type="submit" name="Ajouter_choix">Ajouter un choix</button><br/>
   <?php }
