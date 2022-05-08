@@ -13,7 +13,6 @@ session_start();
 <body>
     <div class="container">
         <?php 
-        $_SESSION['recap'] = array(); // initialisation afin de pouvoir l'utiliser lorseque l'utilisateur va lire une histoire
         if($BDD) {
             $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
             $curseur = $BDD->query($maRequete);
@@ -25,7 +24,7 @@ session_start();
                 <h3><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin correspondant à l'histoire" width=42 ><span class="Titre"><?=$tuple["titre"]?></span></h3>
                 <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
                 <form method="POST">
-                <input type="submit" value="Lire" formaction=<?= "histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"] ?>>  
+                <input type="submit" value="Lire" formaction=<?= "histoire_initialiser.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]."&id_histoire=".$tuple["id_histoire"] ?>>  
                     <?php 
                     if(isUserConnected())
                     {
@@ -36,7 +35,7 @@ session_start();
                         {
                         $historique = $curs_hist->fetch();
                         ?>
-                        <input type="submit" value="Continuer" formaction=<?="histoire_enCours.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"] ?>>
+                        <input type="submit" value="Continuer" formaction=<?="histoire_initialiser.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"]."&id_histoire=".$tuple["id_histoire"] ?>>
                     <?php }
                     }
                     ?>
@@ -49,12 +48,3 @@ session_start();
 
 </body>
 </html>
-
-<?php // MARIE
-// 
-/*<!--<table>
-<tr>
-<td><img class="img-responsive movieImage" src="images/<?= $tuple['hist_img'] ?>"alt="Dessin illustrant l'histoire" width=42></td><td><a href=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>><h3><span class="Titre"><?=$tuple["titre"]?></span></h3></a></td></tr>
-<tr><td></td><td><span class="presentation"><?=$tuple["resume_histoire"]?></span></td></tr>
-</table>-->*/
-?>

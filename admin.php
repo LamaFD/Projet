@@ -34,7 +34,7 @@ session_start();
             <p><span class="presentation">Nombre de fois joué : <?=$tuple["nbr_joue"]?></span> </p>
             <p> <span class="presentation">Taux de réussite : <?=$taux?></span> </p>
             <form class="text-center" method="POST">
-            <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
+            <input type="submit" name="lire" value="Lire" formaction=<?="histoire_initialiser.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]."&id_histoire=".$tuple["id_histoire"]?>>
             <?php 
             $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
             $curs_hist = $BDD->prepare($req_verifier);
@@ -43,7 +43,7 @@ session_start();
             {
             $historique = $curs_hist->fetch();
             ?>
-            <input type="submit" value="Continuer" formaction=<?="histoire_enCours.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"] ?>>
+            <input type="submit" value="Continuer" formaction=<?="histoire_initialiser.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"]."&id_histoire=".$tuple["id_histoire"] ?>>
         <?php }
             ?>
             <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?id_histoire=".$tuple["id_histoire"]?>>

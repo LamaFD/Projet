@@ -14,6 +14,7 @@ session_start();
         <?php 
         if($BDD) {
             $id_page = $_GET["id_page"];
+            $id_histoire = $_GET["id_histoire"];
             array_push($_SESSION['recap'], $id_page);
 
             $maRequete = "SELECT * FROM `page` WHERE id_page=? ORDER BY id_page";
@@ -32,11 +33,16 @@ session_start();
                 <p>Nombre de vies restants : <?=$vie?></p>
                 <?php if($fini==0)
                 { 
-                   echo "Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin !" ;
+                    echo "Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin !" ;
                 } 
                 else
                 {
                     echo "Vous etes arrivés à la fin de l'histoire !" ;
+                    // augmenter le nombre de reussites par 1 
+                    $req = $BDD->prepare('UPDATE  histoire SET nbr_reussites=(nbr_reussites+1) WHERE id_histoire=:_id');
+                    $req->execute(array(
+                        '_id' => $id_histoire,
+                        ));
                 }?>
                 </br>
                 <form method="POST">
@@ -62,7 +68,7 @@ session_start();
                     while($choix = $curseur_choix->fetch()) 
                     {?>
                         
-                        <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value="<?= $choix["texte_choix"] ?>" formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie?> >
+                        <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value="<?= $choix["texte_choix"] ?>" formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie."&id_histoire=".$id_histoire?> >
                     <?php }
                 ?>
                 </form>
