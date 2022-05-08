@@ -47,7 +47,6 @@ session_start();
             if ($curseur->rowCount() == 1) {
                 $_SESSION['role']=$admin;
                 $_SESSION['id_user']= $tuple["id_user"];
-                $_SESSION['recap'] = array();
                 redirect("accueil.php");
             }
             else if ($curseur->rowCount() == 0)

@@ -13,6 +13,7 @@ session_start();
 <body>
     <div class="container">
         <?php 
+        $_SESSION['recap'] = array(); // initialisation afin de pouvoir l'utiliser lorseque l'utilisateur va lire une histoire
         if($BDD) {
             $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
             $curseur = $BDD->query($maRequete);
