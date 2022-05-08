@@ -5,7 +5,7 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle4.css" rel="stylesheet">
+<link href="lib/css/feuillestyle5.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -45,7 +45,7 @@ session_start();
                         if ($curseur->rowCount() == 1) {
                         ?>
                             <div class="alert alert-warning" role="alert">
-                            <strong>Warning!</strong> Vous avez deja ecrit cette page !
+                            <strong>Attention !</strong> Vous avez deja ecrit cette page !
                             </div>
                         <?php
                         }
@@ -126,7 +126,7 @@ session_start();
                         if(empty($tuple["id_premiere_page"]))
                         {?>
                             <div class="alert alert-danger" role="alert">
-                            <strong>Warning !</strong> Votre dernière page a bien été rajoutée mais vous ne pouvez pas finir la création de votre histoire sans avoir défini la première page de cette dernière !
+                            <strong>Attention !</strong> Votre dernière page a bien été rajoutée mais vous ne pouvez pas finir la création de votre histoire sans avoir défini la première page de cette dernière !
                             </div>
                         <?php }
                         else

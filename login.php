@@ -6,7 +6,7 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle4.css" rel="stylesheet">
+<link href="lib/css/feuillestyle5.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <h1 class="text-center"><span class="Titre">Connexion</span></h1>
@@ -52,7 +52,7 @@ session_start();
             else if ($curseur->rowCount() == 0)
             {?>
                 <div class="alert alert-danger" role="alert">
-                <strong>Warning!</strong> Vous n'etes pas inscrit
+                <strong>Attention !</strong> Vous n'etes pas inscrit
                 </div>
             <?php }
             }}

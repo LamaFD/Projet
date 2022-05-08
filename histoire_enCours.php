@@ -6,7 +6,7 @@ session_start();
 
 <!doctype html>
 <html>
-<link href="lib/css/feuillestyle4.css" rel="stylesheet">
+<link href="lib/css/feuillestyle5.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
@@ -72,7 +72,8 @@ session_start();
                     <?php }
                 ?>
                 </form>
-                <p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
+
+                
                 
             <?php
             }}
@@ -83,7 +84,8 @@ session_start();
                     {?>
             <form method="POST">
                 <button type="submit" name="enregistrer">Marquer la page</button> 
-            </form>
+            </form><br/>
+            <p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
                <?php }
                if(isset($_POST["enregistrer"]))
                {

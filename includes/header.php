@@ -1,5 +1,5 @@
 <?php require_once "includes/functions.php"; ?>
-<link href="lib/css/feuillestyle4.css" rel="stylesheet">
+<link href="lib/css/feuillestyle5.css" rel="stylesheet">
 
 <nav class="navbar navbar-default navbar-static-top navbar-custom" role="navigation">
     <div class="container">
@@ -16,12 +16,12 @@
             
                 <?php if (isUserConnected()) {
                     if(administratorIsUserConnected()){ ?>
-                <td width="15%">
+                <td width="20%">
                 <ul class="nav navbar-nav ">
                     <li><a href="admin.php"><span > <img src="images/modif.PNG" alt="Dessin d'un dragon" width=36 /> </span><span class="Titre">Mode admin</span></a></li>
                 </ul>
                     </td>
-                    <td width="15%">
+                    <td width="20%">
                 <ul class="nav navbar-nav">
                         <li><a href="ajout_histoire_titre.php"><span > <img src="images/crayon.PNG" alt="Dessin d'un dragon" width=22 /> </span><span class="Titre">Créer une histoire</span></a></li>
                     </ul>
