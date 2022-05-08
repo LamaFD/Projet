@@ -35,6 +35,17 @@ session_start();
             <p> <span class="presentation">Taux de réussite : <?=$taux?></span> </p>
             <form class="text-center" method="POST">
             <input type="submit" name="lire" value="Lire" formaction=<?="histoire_enCours.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]?>>
+            <?php 
+            $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
+            $curs_hist = $BDD->prepare($req_verifier);
+            $curs_hist->execute(array($tuple["id_histoire"],$_SESSION['id_user']));
+            if($curs_hist->rowCount() == 1)
+            {
+            $historique = $curs_hist->fetch();
+            ?>
+            <input type="submit" value="Continuer" formaction=<?="histoire_enCours.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"] ?>>
+        <?php }
+            ?>
             <input type="submit" name="modif" value="Modifier" formaction=<?="modif_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
             <input type="submit" name="supprime" value="Supprimer" formaction=<?="Supprime_histoire.php?id_histoire=".$tuple["id_histoire"]?>>
             <?php 

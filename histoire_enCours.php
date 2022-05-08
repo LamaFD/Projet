@@ -14,7 +14,8 @@ session_start();
         <?php 
         if($BDD) {
             $id_page = $_GET["id_page"];
-        
+            array_push($_SESSION['recap'], $id_page);
+
             $maRequete = "SELECT * FROM `page` WHERE id_page=? ORDER BY id_page";
             $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($id_page));
