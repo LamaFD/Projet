@@ -18,10 +18,15 @@ session_start();
                 <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
                 <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
                 <label for="page" class="margin-left"> Votre paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id="page" require></textarea><br/>
-                <input type="radio" name="Premier_page" id="Premier_page">
-                <label for="Premier_page">Première page</label>
-                <input type="radio" name="fin_chemin" id="fin_chemin">
-                <label for="fin_chemin">Dernière page</label><br/>  
+    
+                <label for="Premier_page">La premiere page ?</label><br/>
+                <input type="radio" name="Premier_page" value="Oui"> Oui
+                <input type="radio" name="Premier_page" value="Non" checked> Non<br>
+                
+                <label for="fin_chemin">Fin d'un chemin ?</label><br/>
+                <input type="radio" name="fin_chemin" value="Oui"> Oui
+                <input type="radio" name="fin_chemin" value="Non" checked> Non<br>
+
                 <button type="submit" name="ajout">Ajouter une page</button>
                 <button type="submit" name="finit">Fin</button> 
             
@@ -62,7 +67,7 @@ session_start();
                             )); 
 
                             // si la page est la fin d'un chemin
-                            if(isset($_POST["fin_chemin"]))
+                            if($_POST["fin_chemin"]=="Oui")
                             {
                                 // on retrouve l'id de la page qui vient d'etre creer
                                 $maRequete = "SELECT * FROM `page` WHERE page_titre=? AND modif_vie=? AND nbr_choix=? AND texte=? AND id_histoire=?";
@@ -77,8 +82,9 @@ session_start();
                                     ));
                             }
 
-                            if(isset($_POST["Premier_page"]))
+                            if($_POST["Premier_page"]=="Oui")
                             {
+                                echo "je suis ici";//////////////////////////////////
                                 // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                                 $maRequete2 = "SELECT * FROM histoire WHERE id_histoire=?";
                                 $curseur2 = $BDD->prepare($maRequete2);

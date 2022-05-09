@@ -17,13 +17,15 @@ session_start();
         $curseur = $BDD->query($maRequete);
         }
         while($tuple = $curseur->fetch()) {
-        if($tuple["nbr_joue"]==0)
+        if($tuple["nbr_reussites"]==0 && $tuple["nbr_echecs"]==0)
         {
-            $taux=0;
+            $taux_reussite = 0;
+            $taux_echec = 0;
         }
         else
         {
-            $taux = ($tuple["nbr_reussites"]/$tuple["nbr_joue"])*100;
+            $taux_reussite = ($tuple["nbr_reussites"]/($tuple["nbr_reussites"]+$tuple["nbr_echecs"]))*100;
+            $taux_echec = ($tuple["nbr_echecs"]/($tuple["nbr_reussites"]+$tuple["nbr_echecs"]))*100;
         }
         
         ?>
@@ -32,7 +34,8 @@ session_start();
             <p><span class="presentation"><?=$tuple["resume_histoire"]?></span></p>
             <p><span class="presentation">Nombre de vies au debut du jeu : <?=$tuple["nbr_vie"]?> </span></p>
             <p><span class="presentation">Nombre de fois joué : <?=$tuple["nbr_joue"]?></span> </p>
-            <p> <span class="presentation">Taux de réussite : <?=$taux?></span> </p>
+            <p> <span class="presentation">Taux de réussite : <?=$taux_reussite?></span> </p>
+            <p> <span class="presentation">Taux d'échecs : <?=$taux_echec?></span> </p>
             <form class="text-center" method="POST">
             <input type="submit" name="lire" value="Lire" formaction=<?="histoire_initialiser.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]."&id_histoire=".$tuple["id_histoire"]?>>
             <?php 

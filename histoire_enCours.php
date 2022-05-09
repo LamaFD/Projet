@@ -31,9 +31,19 @@ session_start();
                 <h3><?=$tuple["page_titre"]?></a></h3>
                 <p><span class="presentation"><?=$tuple["texte"]?></span></p>
                 <p>Nombre de vies restants : <?=$vie?></p>
-                <?php if($fini==0)
+                <?php if($vie<=0)
                 { 
                     echo "Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin !" ;
+                    // augmenter le nombre d'echecs par 1 
+                    $req = $BDD->prepare('UPDATE  histoire SET nbr_echecs=(nbr_echecs+1) WHERE id_histoire=:_id');
+                    $req->execute(array(
+                        '_id' => $id_histoire,
+                        ));
+                    // si l'utilisateur a marqué une page, on efface l'historique de cela (le joueur perd la marque page car il est arrivé à la fin)
+                    // supprimer l'histoire
+                    $maRequete_historique = "DELETE FROM historique WHERE id_histoire=? AND id_user=?";
+                    $curseur = $BDD->prepare($maRequete_historique);
+                    $curseur->execute(array($id_histoire,$_SESSION['id_user']));
                 } 
                 else
                 {
@@ -43,6 +53,10 @@ session_start();
                     $req->execute(array(
                         '_id' => $id_histoire,
                         ));
+                    // supprimer l'histoire
+                    $maRequete_historique = "DELETE FROM historique WHERE id_histoire=? AND id_user=?";
+                    $curseur = $BDD->prepare($maRequete_historique);
+                    $curseur->execute(array($id_histoire,$_SESSION['id_user']));
                 }?>
                 </br>
                 <form method="POST">
@@ -71,6 +85,7 @@ session_start();
                         <input type="submit" name=<?="choix_".$choix["id_choix"]?>  value="<?= $choix["texte_choix"] ?>" formaction=<?="histoire_enCours.php?id_page=".$choix["id_page_suivante"]."&vie=".$vie."&id_histoire=".$id_histoire?> >
                     <?php }
                 ?>
+                </br><p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
                 </form>
 
                 
@@ -79,14 +94,14 @@ session_start();
             }}
             ?>
 
-            <?php // enregistrer l'avancement dans l'histoire?>
-            <?php if(isUserConnected()) // s'affiche seulement si l'utilisateur est connecté
+            <?php // enregistrer l'avancement dans l'histoire
+                if(isUserConnected()) // s'affiche seulement si l'utilisateur est connecté
                     {?>
-            <form method="POST">
-                <button type="submit" name="enregistrer">Marquer la page</button> 
-            </form><br/>
-            <p class="navbar-left presentation italique">Nombre de vies restantes : <?=$vie?></p>
-               <?php }
+                        <form method="POST">
+                            <button type="submit" name="enregistrer">Marquer la page</button> 
+                        </form><br/>
+                        <?php 
+                    }
                if(isset($_POST["enregistrer"]))
                {
                    // preparation de la requette permettant de verifier si l''histoire a deja été commencé par l'utilisateur
@@ -96,7 +111,7 @@ session_start();
                    if($curs_hist->rowCount() == 1)
                    {
                         $tuple = $curs_hist->fetch();
-                        $id_historique=$tuple["id_historique"];
+                        $id_historique=$tuple["id_historique"];// on retiens l'id de l'historique où on a retrouvé l'historique en question
                         // update les données deja disponible 
                         $req_update = $BDD->prepare("UPDATE  historique SET vie_actuelle=:_vie , id_page=:_page WHERE id_historique=:_historique");
                         $req_update->execute(array(

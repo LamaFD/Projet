@@ -25,21 +25,5 @@ if($BDD) {
     $curseur_supp_page = $BDD->prepare($maRequete_pages);
     $curseur_supp_page->execute(array($id_histoire));
     }
-
-
-
-
-    /*$req_verifier = "SELECT * FROM `page` WHERE id_histoire=?";
-    $curseur_verifier = $BDD->prepare($req_verifier);
-    $curseur_verifier->execute(array($id_histoire));
-    $nb = $curseur->rowCount();
-    if($nb!=0) 
-    {
-        // Supprimer les pages associés à l'histoire
-        $maRequete_pages = "DELETE FROM `page` WHERE id_histoire=?";
-        $curseur = $BDD->prepare($maRequete_pages);
-        $curseur->execute(array($id_histoire));
-    }
-    }*/
 redirect('admin.php');
 
