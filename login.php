@@ -47,7 +47,7 @@ session_start();
             if ($curseur->rowCount() == 1) {
                 $_SESSION['role']=$admin;
                 $_SESSION['id_user']= $tuple["id_user"];
-                redirect("accueil.php");
+                redirect("index.php");
             }
             else if ($curseur->rowCount() == 0)
             {?>

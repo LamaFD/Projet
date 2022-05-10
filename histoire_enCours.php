@@ -39,11 +39,14 @@ session_start();
                     $req->execute(array(
                         '_id' => $id_histoire,
                         ));
-                    // si l'utilisateur a marqué une page, on efface l'historique de cela (le joueur perd la marque page car il est arrivé à la fin)
-                    // supprimer l'histoire
-                    $maRequete_historique = "DELETE FROM historique WHERE id_histoire=? AND id_user=?";
-                    $curseur = $BDD->prepare($maRequete_historique);
-                    $curseur->execute(array($id_histoire,$_SESSION['id_user']));
+                        if(isUserConnected())
+                        {
+                            // si l'utilisateur a marqué une page, on efface l'historique de cela (le joueur perd la marque page car il est arrivé à la fin)
+                            // supprimer l'histoire
+                            $maRequete_historique = "DELETE FROM historique WHERE id_histoire=? AND id_user=?";
+                            $curseur = $BDD->prepare($maRequete_historique);
+                            $curseur->execute(array($id_histoire,$_SESSION['id_user']));
+                        }
                 } 
                 else
                 {
@@ -53,10 +56,14 @@ session_start();
                     $req->execute(array(
                         '_id' => $id_histoire,
                         ));
+                        
+                    if(isUserConnected())
+                    {
                     // supprimer l'histoire
                     $maRequete_historique = "DELETE FROM historique WHERE id_histoire=? AND id_user=?";
                     $curseur = $BDD->prepare($maRequete_historique);
                     $curseur->execute(array($id_histoire,$_SESSION['id_user']));
+                    }
                 }?>
                 </br>
                 <form method="POST">

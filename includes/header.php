@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-target">
         <td width="25%">
         <ul class="nav navbar-nav navbar-left">
-        <li><a href="accueil.php"> 
+        <li><a href="index.php"> 
             <span > <img src="images/dragon.PNG" alt="Dessin d'un dragon" width=28 /> </span> <span class="Titre"> My Story</span></a></li>
             </ul>    
         </td>

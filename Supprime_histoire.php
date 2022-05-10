@@ -25,5 +25,5 @@ if($BDD) {
     $curseur_supp_page = $BDD->prepare($maRequete_pages);
     $curseur_supp_page->execute(array($id_histoire));
     }
-redirect('admin.php');
+redirect('index.php');
 

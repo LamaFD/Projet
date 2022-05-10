@@ -26,4 +26,4 @@ if($BDD) {
         }
     
 }
-redirect("accueil.php");
+redirect("index.php");
