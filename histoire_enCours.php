@@ -56,7 +56,7 @@ session_start();
                     $req->execute(array(
                         '_id' => $id_histoire,
                         ));
-                        
+
                     if(isUserConnected())
                     {
                     // supprimer l'histoire
@@ -66,8 +66,8 @@ session_start();
                     }
                 }?>
                 </br>
-                <form method="POST">
-                <input type="submit" name="Fin" value= "FINI" formaction="histoire_recap.php">
+                <form>
+                <input type="submit" name="Fin_lecture" value= "FINI" formaction="histoire_recap.php">
                 </form>
                 
             <?php }

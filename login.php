@@ -15,9 +15,9 @@ session_start();
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
         <span class="presentation">Etes vous un admin ?</span><br/>
-        <input type="radio" name="AdminOui" id="AdminOui">
+        <input type="radio" name="Admin" id="AdminOui">
         <label for="AdminOui">Oui</label><br/>
-        <input type="radio" name="AdminNon" id="AdminNon">
+        <input type="radio" name="Admin" id="AdminNon" checked >
         <label for="AdminNon">Non</label><br/>
         <button type="submit">Se connecter</button>
         <button type="reset">Effacer</button><br/>

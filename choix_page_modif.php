@@ -21,12 +21,13 @@ session_start();
             $curseur->execute(array($id_histoire));
             while($tuple = $curseur->fetch())
             {?>
-            
             <a href=<?="modif_page.php?id_page=".$tuple["id_page"]."&id_histoire=".$id_histoire?>><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
-            
             <?php
-            }
-        }
+            }?>
+            <form class="text-center">
+                <input type="submit" name="Fin_modification" value= "Fin des modification" formaction="index.php">
+            </form>
+            <?php }
     ?>
 </div>
 </body>
