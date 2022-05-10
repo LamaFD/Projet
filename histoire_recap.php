@@ -11,7 +11,7 @@ session_start();
 <?php require_once "includes/header.php"; ?>
 <body>
     <div class="container text-center">
-    <h1 class="text-center"><span class="Titre">Recapitulative de votre aventure : </span></h1>
+    <h1 class="text-center"><span class="Titre">Récapitulatif de votre aventure : </span></h1>
         <?php 
         if($BDD) {
             foreach($_SESSION['recap'] as $page)

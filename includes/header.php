@@ -18,7 +18,7 @@
                     if(administratorIsUserConnected()){ ?>
                 <td width="20%">
                 <ul class="nav navbar-nav ">
-                    <li><a href="admin.php"><span > <img src="images/modif.PNG" alt="Dessin d'un dragon" width=36 /> </span><span class="Titre">Mode admin</span></a></li>
+                    <li><a href="admin.php"><span > <img src="images/modif.PNG" alt="Dessin d'un dragon" width=36 /> </span><span class="Titre">Mode créateur</span></a></li>
                 </ul>
                     </td>
                     <td width="20%">
