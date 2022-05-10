@@ -37,7 +37,7 @@ session_start();
                 $curseur->execute(array($login,$mdp,$admin));
                 if ($curseur->rowCount() == 1) {
                     ?>
-                    <div class="alert alert-warning" role="alert">
+                    <div class="text-center alert alert-warning" role="alert">
                     <strong>Warning !</strong> Vous avez deja un compte !
                     </div>
                     <?php
@@ -58,7 +58,7 @@ session_start();
             }
             else
             {?>
-                <div class="alert alert-danger" role="alert">
+                <div class="text-center alert alert-danger" role="alert">
                 <strong>Warning!</strong> Vos mots de passes ne sont pas identiques !
                 </div>
                 <?php

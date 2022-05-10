@@ -15,24 +15,21 @@ session_start();
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
         <span class="presentation">Etes vous un admin ?</span><br/>
-        <input type="radio" name="Admin" id="AdminOui">
-        <label for="AdminOui">Oui</label><br/>
-        <input type="radio" name="Admin" id="AdminNon" checked >
-        <label for="AdminNon">Non</label><br/>
+        <input type="radio" name="Admin" value="Oui"> Oui
+        <input type="radio" name="Admin" value="Non" checked> Non<br>
         <button type="submit">Se connecter</button>
         <button type="reset">Effacer</button><br/>
         <input type="submit" name="inscription" value="Inscription" formaction="inscription.php">
         </form>
 
-
     <?php
         if(!empty($_POST))
         {
-            if(!empty($_POST["AdminOui"]))
+            if($_POST["Admin"]=="Oui")
             {
                 $admin="admin";
             }
-            if(!empty($_POST["AdminNon"]))
+            if($_POST["Admin"]=="Non")
             {
                 $admin="user";
             }
@@ -44,19 +41,20 @@ session_start();
             $curseur = $BDD->prepare($maRequete);
             $curseur->execute(array($login,$mdp,$admin));
             $tuple = $curseur->fetch();
+            // si l'utilisateur existe dans la base de données
             if ($curseur->rowCount() == 1) {
                 $_SESSION['role']=$admin;
                 $_SESSION['id_user']= $tuple["id_user"];
                 redirect("index.php");
             }
+            // sinon
             else if ($curseur->rowCount() == 0)
             {?>
-                <div class="alert alert-danger" role="alert">
+                <div class="text-center alert alert-danger" role="alert" >
                 <strong>Attention !</strong> Vous n'etes pas inscrit
                 </div>
             <?php }
             }}
         ?>
-    
     </html>
 

@@ -44,6 +44,8 @@ session_start();
                             <?php }
                     ?>
                 </select><br/>
+                <input type="submit" name="Supprimer_choix" value="Supprimer le choix" formaction=<?="Supprimer_choix.php?id_choix=".$choix["id_choix"]."&id_page=".$id_page?>>
+                <br/>
                 
             <?php }
             while($nb<$nb_choix) // si il doit avoir plus de choix que celle deja existantes
@@ -64,6 +66,8 @@ session_start();
                                 <?php }
                         ?>
                     </select><br/>
+                    <input type="hidden" id="id_choix" name="id_choix" value=<?=$choix["id_choix"]?>>
+                    <button type="submit" name="Supprimer_choix">Supprimer le choix</button></br>
                     
           <?php }
             

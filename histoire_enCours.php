@@ -141,7 +141,7 @@ session_start();
                    }
                    ?>
                     <!-- affichage notif-->
-                    <div class="alert alert-info" role="alert">
+                    <div class="text-center alert alert-info" role="alert">
                     Votre avancement a bien été enregistré !
                     </div>
                    <?php

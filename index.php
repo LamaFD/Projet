@@ -14,7 +14,7 @@ session_start();
     <div class="container">
         <?php 
         if($BDD) {
-            $maRequete = "SELECT * FROM histoire ORDER BY id_histoire";
+            $maRequete = "SELECT * FROM histoire ORDER BY id_histoire DESC";
             $curseur = $BDD->query($maRequete);
             while($tuple = $curseur->fetch())
             {
