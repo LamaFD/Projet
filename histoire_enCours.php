@@ -28,9 +28,17 @@ session_start();
             $fini=$tuple["Fin"];
             if($vie<=0 || $fini==1) // On affiche le contenu de la page sans les choix
             {?>
-                <h3><?=$tuple["page_titre"]?></a></h3>
-                <p><span class="presentation"><?=$tuple["texte"]?></span></p>
-                <p>Nombre de vies restants : <?=$vie?></p>
+                <h3>
+                    <?=$tuple["page_titre"]?></a>
+                </h3>
+                <p>
+                    <span class="presentation">
+                        <?=$tuple["texte"]?>
+                    </span>
+                </p>
+                <p>
+                    Nombre de vies restants : <?=$vie?>
+                </p>
                 <?php if($vie<=0)
                 { 
                     echo "Vous n'avez plus de vies restant, votre chemin est arrivée à sa fin !" ;
@@ -67,18 +75,24 @@ session_start();
                 }?>
                 </br>
                 <form>
-                <input type="submit" name="Fin_lecture" value= "FINI" formaction="histoire_recap.php">
+                    <input type="submit" name="Fin_lecture" value= "FINI" formaction="histoire_recap.php">
                 </form>
                 
             <?php }
 
             else // On affiche le contenu de la page avec les choix 
             {?>
-                <h3><?=$tuple["page_titre"]?></a></h3>
-                <p><span class="presentation"><?=$tuple["texte"]?></span></p>
+                <h3>
+                    <?=$tuple["page_titre"]?></a>
+                </h3>
+                <p>
+                    <span class="presentation">
+                        <?=$tuple["texte"]?>
+                    </span>
+                </p>
                 
                 <form method="POST" class="form2">
-                <input type=hidden name="vie" value=$vie>
+                    <input type=hidden name="vie" value=$vie>
                 
                 <?php 
                     // chercher les choix 

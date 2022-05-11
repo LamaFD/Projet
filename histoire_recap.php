@@ -21,14 +21,20 @@ session_start();
                 $curs_recap->execute(array($page));
                 $tuple = $curs_recap->fetch();
                 ?> 
-                <h2><?=$tuple['page_titre']?></h2></br>
-                <p><?=$tuple['texte']?></p></br>
+                <h2>
+                    <?=$tuple['page_titre']?>
+                </h2>
+                <br/>
+                <p>
+                    <?=$tuple['texte']?>
+                </p>
+                <br/>
                 <?php                                
             }
                }
             ?>
             <form type="POST">
-            <input type="submit" name="Fin" value= "Retour à l'accueil" formaction="index.php">
+                <input type="submit" name="Fin" value= "Retour à l'accueil" formaction="index.php">
             </form>
     </div>
 </body>

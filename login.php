@@ -9,9 +9,13 @@ session_start();
 <link href="lib/css/feuillestyle5.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
-<h1 class="text-center"><span class="Titre">Connexion</span></h1>
-        <form class="text-center" method="POST">
-            <br/>
+    <h1 class="text-center">
+        <span class="Titre">
+            Connexion
+        </span>
+    </h1>
+    <form class="text-center" method="POST">
+    <br/>
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
         <span class="presentation">Etes vous un admin ?</span><br/>
@@ -20,7 +24,7 @@ session_start();
         <button type="submit">Se connecter</button>
         <button type="reset">Effacer</button><br/>
         <input type="submit" name="inscription" value="Inscription" formaction="inscription.php">
-        </form>
+    </form>
 
     <?php
         if(!empty($_POST))

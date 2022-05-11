@@ -11,7 +11,11 @@ session_start();
 <body>
 
 <div class="container">
-<h1 class="text-center"><span class="Titre">Ajoutez les liens entre vos paragraphes</span></h1>
+    <h1 class="text-center">
+        <span class="Titre">
+            Ajoutez les liens entre vos paragraphes
+        </span>
+    </h1>
     <?php 
     if($BDD) {
         $id_histoire =$_SESSION["id_histoire"];

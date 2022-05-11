@@ -8,9 +8,13 @@ session_start();
 <link href="lib/css/feuillestyle5.css" rel="stylesheet">
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
-<h1 class="text-center"><span class="Titre">Votre page</span></h1>
-<div class="container">
-    <form class="text-center" method="POST" action="modif_choix_action.php">
+    <h1 class="text-center">
+        <span class="Titre">
+            Votre page
+        </span>
+    </h1>
+    <div class="container">
+        <form class="text-center" method="POST" action="modif_choix_action.php">
     <?php 
         $id_page = $_GET["id_page"];
         $id_histoire = $_GET["id_histoire"];
@@ -43,7 +47,8 @@ session_start();
 
                             <?php }
                     ?>
-                </select><br/>
+                </select>
+                <br/>
                 <input type="submit" name="Supprimer_choix" value="Supprimer le choix" formaction=<?="Supprimer_choix.php?id_choix=".$choix["id_choix"]."&id_page=".$id_page?>>
                 <br/>
                 

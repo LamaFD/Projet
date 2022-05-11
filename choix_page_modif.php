@@ -9,8 +9,12 @@ session_start();
 <?php require_once "includes/head.php"; ?>
 <?php require_once "includes/header.php"; ?>
 <body>
-<div class="container">
-<h1 class="text-center"><span class="Titre">Quelle page voulez-vous modifier ? </span></h1>
+    <div class="container">
+        <h1 class="text-center">
+            <span class="Titre">
+                Quelle page voulez-vous modifier ? 
+            </span>
+        </h1>
 <?php 
         $id_histoire = $_GET["id_histoire"];
 
@@ -31,7 +35,7 @@ session_start();
                 <input type="submit" name="Ajout_page" value= "Ajouter une page" >
             </form>
             <?php }
-    ?>
-</div>
-</body>
+            ?>
+        </div>
+    </body>
 </html>

@@ -31,13 +31,35 @@ session_start();
         <form class="text-center" method="POST" action="modif_histoire_action.php">
         <table>
             <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?>>
-            <tr><td><label for="titre">Titre : </label></td><td><input type="text" name="titre" id="titre" size="50" value="<?= $Titre ?>"></td></tr>
-            <tr><td><label for="resume">Résumé : </label></td><td><br/><textarea cols='50' rows='7' name="resume" id="resume"><?php echo $Resume;?></textarea><br/></td></tr>
-            <tr><td><label for="nbr_vie"> Nombre de vies en début d'aventure : </label></td><td><input type="number" name="nbr_vie" id="nbr_vie" value="<?= $nbr_vies ?>"/></td></tr>
-            
+            <tr>
+                <td>
+                    <label for="titre">Titre : </label>
+                </td>
+                <td>
+                    <input type="text" name="titre" id="titre" size="50" value="<?= $Titre ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="resume">Résumé : </label>
+                </td>
+                <td>
+                    <br/>
+                    <textarea cols='50' rows='7' name="resume" id="resume"><?php echo $Resume;?></textarea>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="nbr_vie"> Nombre de vies en début d'aventure : </label>
+                </td>
+                <td>
+                    <input type="number" name="nbr_vie" id="nbr_vie" value="<?= $nbr_vies ?>"/>
+                </td>
+            </tr>  
         </table>
         <button type="submit">Continuer</button><br/>
+        </form>
     </main>
-</form>
 </body>
 </html>
