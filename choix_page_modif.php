@@ -23,9 +23,12 @@ session_start();
             {?>
             <a href=<?="modif_page.php?id_page=".$tuple["id_page"]."&id_histoire=".$id_histoire?>><p><h3><span class="presentation"><?=$tuple["page_titre"]?></span></h3></p>
             <?php
-            }?>
-            <form class="text-center">
+            }
+            ?>
+            <form class="text-center" action="ajout_page.php">
+                <input type="hidden" id="id_histoire_modif" name="id_histoire_modif" value=<?=$id_histoire?>>
                 <input type="submit" name="Fin_modification" value= "Fin des modification" formaction="index.php">
+                <input type="submit" name="Ajout_page" value= "Ajouter une page" >
             </form>
             <?php }
     ?>

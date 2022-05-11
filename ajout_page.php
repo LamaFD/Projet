@@ -16,7 +16,17 @@ session_start();
 
                 <label for="titre_page"> Titre de votre page : </label><input type="text" name="titre_page" id="titre_page" size="35" require/></br>
                 <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id="modif_vie" size="35" require/></br>
-                <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
+                <?php 
+                if(empty($_GET["id_histoire_modif"])) // si l'ajout de page n'est pas demandé lors d'une modification 
+                {?>
+                    <label for="nbr_choix"> Nombre de choix associés à cette page : </label><input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
+          <?php }
+                else
+                {?>
+                    <input type="hidden" id="nbr_choix" name="nbr_choix" value=<?=0?>>
+          <?php }
+                ?>
+                
                 <label for="page" class="margin-left"> Votre paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id="page" require></textarea><br/>
     
                 <label for="Premier_page">La premiere page ?</label><br/>
@@ -27,7 +37,13 @@ session_start();
                 <input type="radio" name="fin_chemin" value="Oui"> Oui
                 <input type="radio" name="fin_chemin" value="Non" checked> Non<br>
 
-                <button type="submit" name="ajout">Ajouter une page</button>
+                <?php 
+                if(empty($_GET["id_histoire_modif"])) // si l'ajout de page n'est pas demandé lors d'une modification 
+                {?>
+                    <button type="submit" name="ajout">Ajouter une page</button>
+          <?php }
+                ?>
+                
                 <button type="submit" name="finit">Fin</button> 
             
         </form>
@@ -123,21 +139,29 @@ session_start();
 
                     if(isset($_POST["finit"])) // si on a fini de creer des pages 
                     {
+                        if(empty($_GET["id_histoire_modif"])) // si l'ajout d'une page n'est pas demandé lors d'une modification
+                        {
                         // on fait la requete afin de pouvoir verifier si une id est deja associé au id de la premiere page
                         $maRequete3 = "SELECT * FROM histoire WHERE id_histoire=?";
                         $curseur = $BDD->prepare($maRequete3);
                         $curseur->execute(array($_SESSION["id_histoire"]));
                         $tuple = $curseur->fetch();
-                        // on verifie si la premiere page est deja defini
-                        if(empty($tuple["id_premiere_page"]))
-                        {?>
-                            <div class="alert alert-danger" role="alert">
-                            <strong>Attention !</strong> Votre dernière page a bien été rajoutée mais vous ne pouvez pas finir la création de votre histoire sans avoir défini la première page de cette dernière !
-                            </div>
-                        <?php }
-                        else
+                            // on verifie si la premiere page est deja defini
+                            if(empty($tuple["id_premiere_page"]))
+                            {?>
+                                <div class="alert alert-danger" role="alert">
+                                <strong>Attention !</strong> Votre dernière page a bien été rajoutée mais vous ne pouvez pas finir la création de votre histoire sans avoir défini la première page de cette dernière !
+                                </div>
+                            <?php }
+                            else
+                            {
+                                redirect("lien_pages.php");
+                            }
+                        }
+
+                        else // si l'ajout d'une page est pas demandé lors d'une modification
                         {
-                            redirect("lien_pages.php");
+                            redirect("choix_page_modif.php?id_histoire=".$id_histoire);
                         }
                     }
 
