@@ -75,7 +75,7 @@ session_start();
                 }?>
                 </br>
                 <form>
-                    <input type="submit" name="Fin_lecture" value= "FINI" formaction="histoire_recap.php">
+                    <input type="submit" name="Fin_lecture" value= "FIN" formaction="histoire_recap.php">
                 </form>
                 
             <?php }

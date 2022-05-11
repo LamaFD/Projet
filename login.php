@@ -18,7 +18,7 @@ session_start();
     <br/>
         <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="27"></br>
         <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="27"></br>
-        <span class="presentation">Etes vous un admin ?</span><br/>
+        <span class="presentation">Etes vous un administrateur ?</span><br/>
         <input type="radio" name="Admin" value="Oui"> Oui
         <input type="radio" name="Admin" value="Non" checked> Non<br>
         <button type="submit">Se connecter</button>
@@ -55,7 +55,7 @@ session_start();
             else if ($curseur->rowCount() == 0)
             {?>
                 <div class="text-center alert alert-danger" role="alert" >
-                <strong>Attention !</strong> Vous n'etes pas inscrit
+                <strong>Attention !</strong> Vous n'êtes pas inscrit
                 </div>
             <?php }
             }}
