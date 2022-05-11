@@ -53,28 +53,6 @@ session_start();
                 <br/>
                 
             <?php }
-            while($nb<$nb_choix) // si il doit avoir plus de choix que celle deja existantes
-                {
-                    $nb++;?>
-                    <label for=<?="choix_".$nb?>> <?="Choix ".$nb?> </label>
-                    <input type="text" name=<?="choix_".$nb."_texte"?> id=<?="choix_".$nb."_texte"?> size="35" value="<?= $choix["texte_choix"] ?>"/>
-                    <select name=<?="choix_".$nb."_pageSuivante"?> id=<?="choix_".$nb."_pageSuivante"?>>
-                        <?php 
-                                // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages
-                                $maRequete2 = "SELECT * FROM `page` WHERE id_histoire=? ORDER BY id_page";
-                                $curseur2 = $BDD->prepare($maRequete2);
-                                $curseur2->execute(array($id_histoire));
-                                while($tuple2 = $curseur2->fetch()) 
-                                {?>
-                                    <option value=<?=$tuple2["id_page"]?>> <?=$tuple2["page_titre"]?> </option>
-
-                                <?php }
-                        ?>
-                    </select><br/>
-                    <input type="hidden" id="id_choix" name="id_choix" value=<?=$choix["id_choix"]?>>
-                    <button type="submit" name="Supprimer_choix">Supprimer le choix</button></br>
-                    
-          <?php }
             
             ?>
             <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?>>

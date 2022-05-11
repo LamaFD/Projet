@@ -48,7 +48,8 @@ session_start();
                 <label for="fin_chemin_oui">Oui</label>
                 <input type="radio" name="fin_chemin" id="fin_chemin_non" checked>
                 <label for="fin_chemin_non">Non</label>
-            <?php ;}?>
+            <?php ;}
+            ?>
             <br/>
             <button type="submit" name="Modifier">Confirmer les modifications</button><br/>
             <button type="submit" name="Choix">Modifier les choix</button><br/>
