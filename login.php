@@ -23,7 +23,9 @@ session_start();
         <input type="radio" name="Admin" value="Non" checked> Non<br>
         <button type="submit">Se connecter</button>
         <button type="reset">Effacer</button><br/>
-        <input type="submit" name="inscription" value="Inscription" formaction="inscription.php">
+    </form>
+    <form methode="POST" class="text-center">
+            <input type="submit" name="inscription" id="inscription" value="Inscription" formaction="inscription.php">
     </form>
 
     <?php

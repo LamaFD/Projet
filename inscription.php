@@ -26,7 +26,6 @@ session_start();
             <br/>
         </form>
     
-
     <?php
         if(!empty($_POST))
         {
@@ -43,7 +42,7 @@ session_start();
                 if ($curseur->rowCount() == 1) {
                     ?>
                     <div class="text-center alert alert-warning" role="alert">
-                    <strong>Warning !</strong> Vous avez deja un compte !
+                    <strong>Attention !</strong> Vous avez deja un compte !
                     </div>
                     <?php
                 }
