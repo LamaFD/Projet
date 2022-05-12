@@ -13,8 +13,12 @@ session_start();
     <div class="container text-center">
         <?php 
         if($BDD) {
+            if($_GET["id_page"]!=NULL) // si une page est designé en tant que premiere page de l'histoire
+            {
             $id_page = $_GET["id_page"];
             $id_histoire = $_GET["id_histoire"];
+            echo print_r($_SESSION);
+            echo print_r($_GET);
             array_push($_SESSION['recap'], $id_page);
 
             $maRequete = "SELECT * FROM `page` WHERE id_page=? ORDER BY id_page";
@@ -113,6 +117,12 @@ session_start();
                 
             <?php
             }}
+            if($_GET["id_page"]==NULL) // si aucune page n'est desognée en tant que premiere page de l'histoire
+            {?>
+                <div class="text-center alert alert-danger" role="alert" >
+                <strong>Attention !</strong> Aucune page n'est désignée en tant que premiere page de cette histoire
+                </div>
+      <?php }
             ?>
 
             <?php // enregistrer l'avancement dans l'histoire
@@ -159,9 +169,9 @@ session_start();
                     Votre avancement a bien été enregistré !
                     </div>
                    <?php
-               }
+               }}
             ?>
-
+        
     </div>
 
 

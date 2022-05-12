@@ -31,7 +31,7 @@ session_start();
             ?>
             <form class="text-center" action="ajout_page.php">
                 <input type="hidden" id="id_histoire_modif" name="id_histoire_modif" value=<?=$id_histoire?>>
-                <input type="submit" name="Fin_modification" value= "Fin des modifications" formaction="index.php">
+                <input type="submit" name="Fin_modification" value= "Fin des modifications" formaction="admin.php">
                 <input type="submit" name="Ajout_page" value= "Ajouter une page" >
             </form>
             <?php }
