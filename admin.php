@@ -91,10 +91,10 @@ session_start();
         }
         ?>
         <br/>
-        <footer>
-            <div class="text-right">
-                <a href="admin.php" class="presentation">Cliquer ici pour retourner en haut de la page</a>
-            </div>
+        <footer class="text-center">
+                <form methode="POST">
+                    <input type="submit" name="haut" id="haut" value="Cliquer ici pour retourner en haut de la page" formaction="index.php">
+                </form>
         </footer>   
     </div>
 </body>

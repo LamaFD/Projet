@@ -17,8 +17,6 @@ session_start();
             {
             $id_page = $_GET["id_page"];
             $id_histoire = $_GET["id_histoire"];
-            echo print_r($_SESSION);
-            echo print_r($_GET);
             array_push($_SESSION['recap'], $id_page);
 
             $maRequete = "SELECT * FROM `page` WHERE id_page=? ORDER BY id_page";

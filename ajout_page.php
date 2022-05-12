@@ -19,12 +19,12 @@ session_start();
                 <label for="titre_page"> 
                     Titre de votre page : 
                 </label>
-                    <input type="text" name="titre_page" id="titre_page" size="35" require/>
+                    <input type="text" name="titre_page" id="titre_page" size="35" required />
                 </br>
                 <label for="modif_vie">
                      Modification du vie : 
                     </label>
-                    <input type="number" name="modif_vie" id="modif_vie" size="35" require/>
+                    <input type="number" name="modif_vie" id="modif_vie" size="35" required />
                 </br>
                 <?php 
                 if(empty($_GET["id_histoire_modif"])) // si l'ajout de page n'est pas demandé lors d'une modification 
@@ -32,7 +32,7 @@ session_start();
                     <label for="nbr_choix"> 
                         Nombre de choix associés à cette page : 
                     </label>
-                    <input type="number" name="nbr_choix" id="nbr_choix" size="35" require/></br>
+                    <input type="number" name="nbr_choix" id="nbr_choix" size="35" required /></br>
           <?php }
                 else
                 {?>
@@ -45,7 +45,7 @@ session_start();
                      Votre paragraphe : 
                     </label>
                     <br/>
-                    <textarea cols='80' rows='20' name="page" id="page" require></textarea>
+                    <textarea cols='80' rows='20' name="page" id="page" required ></textarea>
                     <br/>
     
                 <label for="Premier_page">

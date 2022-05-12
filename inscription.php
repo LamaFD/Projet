@@ -13,9 +13,9 @@ session_start();
     <h1 class="text-center"><span class="Titre">Inscription</span></h1>
     
         <form class="text-center" method="POST">
-            <input type="text" name="login" id="login" placeholder="Entrez votre login" require size="35"><br/>
-            <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" require size="35"><br/>
-            <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez votre mot de passe" require size="35"><br/>
+            <input type="text" name="login" id="login" placeholder="Entrez votre login" required size="35"><br/>
+            <input type="password" name="mdp" id="mdp" placeholder="Entrez votre mot de passe" required size="35"><br/>
+            <input type="password" name="mdp2" id="mdp2" placeholder="Confirmez votre mot de passe" required size="35"><br/>
         
             <button type="submit" >
                 S'inscrire
@@ -28,7 +28,7 @@ session_start();
     
 
     <?php
-        if(!empty($_POST) && !empty($_POST["mdp2"]))
+        if(!empty($_POST))
         {
             if($_POST["mdp"]==$_POST["mdp2"])
             {
@@ -64,7 +64,7 @@ session_start();
             else
             {?>
                 <div class="text-center alert alert-danger" role="alert">
-                    <strong>Warning!</strong> Vos mots de passes ne sont pas identiques !
+                    <strong>Attention !</strong> Les mots de passes ne sont pas identiques !
                 </div>
                 <?php
             }

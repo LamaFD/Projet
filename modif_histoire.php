@@ -30,13 +30,13 @@ session_start();
     <main class="container">
         <form class="text-center" method="POST" action="modif_histoire_action.php">
         <table>
-            <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?>>
+            <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?> required>
             <tr>
                 <td>
                     <label for="titre">Titre : </label>
                 </td>
                 <td>
-                    <input type="text" name="titre" id="titre" size="50" value="<?= $Titre ?>">
+                    <input type="text" name="titre" id="titre" size="50" value="<?= $Titre ?>" required>
                 </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@ session_start();
                 </td>
                 <td>
                     <br/>
-                    <textarea cols='50' rows='7' name="resume" id="resume"><?php echo $Resume;?></textarea>
+                    <textarea cols='50' rows='7' name="resume" id="resume" required><?php echo $Resume;?></textarea>
                     <br/>
                 </td>
             </tr>
@@ -54,7 +54,7 @@ session_start();
                     <label for="nbr_vie"> Nombre de vies en début d'aventure : </label>
                 </td>
                 <td>
-                    <input type="number" name="nbr_vie" id="nbr_vie" value="<?= $nbr_vies ?>"/>
+                    <input type="number" name="nbr_vie" id="nbr_vie" value="<?= $nbr_vies ?>" required/>
                 </td>
             </tr>  
         </table>

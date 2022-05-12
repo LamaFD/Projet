@@ -13,7 +13,7 @@ session_start();
 <div class="container">
     <h1 class="text-center">
         <span class="Titre">
-            Ajoutez les liens entre vos paragraphes
+            Ajoutez des liens entre vos paragraphes
         </span>
     </h1>
     <?php 
@@ -34,7 +34,7 @@ session_start();
             <?php while($nb_choix<=$tuple["nbr_choix"]) 
             {?>
             <label for=<?="choix_".$nb_choix?>> <?="Choix ".$nb_choix?> </label>
-            <input type="text" name=<?="choix_".$nb_choix."_".$tuple["id_page"]."_"."_texte"?> id=<?="choix_".$nb_choix."_".$tuple["id_page"]."_"."_texte"?> size="35" placeholder="texte representant le choix "/>
+            <input type="text" name=<?="choix_".$nb_choix."_".$tuple["id_page"]."_"."_texte"?> id=<?="choix_".$nb_choix."_".$tuple["id_page"]."_"."_texte"?> size="35" placeholder="texte representant le choix " required />
             <select name=<?="choix_".$nb_choix."_".$tuple["id_page"]?> id=<?="choix_".$nb_choix."_".$tuple["id_page"]?>>
                 <?php 
                         // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages

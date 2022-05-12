@@ -33,30 +33,34 @@ session_start();
                             </span>
                         </p>
                 
-                        <form method="POST">        
-                            <input type="submit" value="Lire" formaction=<?= "histoire_initialiser.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]."&id_histoire=".$tuple["id_histoire"] ?>>  
-                            <?php 
+                        <?php 
                             if(isUserConnected())
-                            {
-                                $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
-                                $curs_hist = $BDD->prepare($req_verifier);
-                                $curs_hist->execute(array($tuple["id_histoire"],$_SESSION['id_user']));
-                                if($curs_hist->rowCount() == 1)
-                                {
-                                    $historique = $curs_hist->fetch();
-                                ?>
-                                <input type="submit" value="Continuer" formaction=<?="histoire_initialiser.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"]."&id_histoire=".$tuple["id_histoire"] ?>>
-                                <?php }
-                            }?>
-                        </form>
+                            {?>
+                                <form method="POST">        
+                                <input type="submit" value="Lire" formaction=<?= "histoire_initialiser.php?id_page=".$tuple["id_premiere_page"]."&vie=".$tuple["nbr_vie"]."&id_histoire=".$tuple["id_histoire"] ?>>  
+                                <?php 
+                                    $req_verifier = "SELECT * FROM `historique` WHERE id_histoire=? AND id_user=?";
+                                    $curs_hist = $BDD->prepare($req_verifier);
+                                    $curs_hist->execute(array($tuple["id_histoire"],$_SESSION['id_user']));
+                                    if($curs_hist->rowCount() == 1)
+                                    {
+                                        $historique = $curs_hist->fetch();
+                                    ?>
+                                    <input type="submit" value="Continuer" formaction=<?="histoire_initialiser.php?id_page=".$historique["id_page"]."&vie=".$historique["vie_actuelle"]."&id_histoire=".$tuple["id_histoire"] ?>>
+                                    <?php }?>
+                                </form>
+                      <?php }?>
+                        
                         <?php 
                         }
                     }
                 }?>
         <br/>
         <footer>
-            <div class="text-right">
-                <a href="index.php" class="presentation">Cliquer ici pour retourner en haut de la page</a>
+            <div class="text-center">
+                <form methode="POST">
+                    <input type="submit" name="haut" id="haut" value="Cliquer ici pour retourner en haut de la page" formaction="index.php">
+                </form>
             </div>
         </footer>
         

@@ -34,7 +34,7 @@ session_start();
             {
                 $nb++;?>
                 <label for=<?="choix_".$nb?>> <?="Choix ".$nb?> </label>
-                <input type="text" name=<?="choix_".$nb."_texte"?> id=<?="choix_".$nb."_texte"?> size="35" value="<?= $choix["texte_choix"] ?>"/>
+                <input type="text" name=<?="choix_".$nb."_texte"?> id=<?="choix_".$nb."_texte"?> size="35" value="<?= $choix["texte_choix"] ?>" required/>
                 <select name=<?="choix_".$nb."_pageSuivante"?> id=<?="choix_".$nb."_pageSuivante"?> value=<?= $choix["id_page_suivante"] ?>>
                     <?php 
                             // refaire une requete identique à la premiere afin de pouvoir afficher tous les pages

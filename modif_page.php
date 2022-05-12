@@ -29,8 +29,8 @@ session_start();
             ?>
             <input type="hidden" id="id_histoire" name="id_histoire" value=<?=$id_histoire?>>
             <input type="hidden" id="id_page" name="id_page" value=<?=$id_page?>>
-            <label for="titre_page"> Titre de la page : </label><input type="text" name="titre_page" id=<?="titre_page_".$id_page?> size="35" value="<?=$Titre_page?>"></br>
-            <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id="modif_vie" size="35" value="<?= $modif_vie ?>"   require/></br>
+            <label for="titre_page"> Titre de la page : </label><input type="text" name="titre_page" id=<?="titre_page_".$id_page?> size="35" value="<?=$Titre_page?>" required></br>
+            <label for="modif_vie"> Modification du vie : </label><input type="number" name="modif_vie" id="modif_vie" size="35" value="<?= $modif_vie ?>"   required/></br>
             <label for="page" class="margin-left"> Le paragraphe : </label><br/><textarea cols='80' rows='20' name="page" id=<?="page_".$id_page?>><?php echo $Text_page;?></textarea><br/>
             <?php
             if($fin==1){

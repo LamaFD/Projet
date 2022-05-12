@@ -25,7 +25,7 @@ session_start();
                     </label>
                 </td>
                 <td>
-                    <input type="text" name="titre" id="titre" size="50" require/>
+                    <input type="text" name="titre" id="titre" size="50" required/>
                 </td>
             </tr>
             <tr>
@@ -36,7 +36,7 @@ session_start();
                 </td>
                 <td>
                     <br/>
-                    <textarea cols='50' rows='7' name="resume" id="resume" require></textarea>
+                    <textarea cols='50' rows='7' name="resume" id="resume" required></textarea>
                     <br/>
                 </td>
             </tr>
@@ -47,7 +47,7 @@ session_start();
                     </label>
                 </td>
                 <td>
-                    <input type="number" name="nbr_vie" id="nbr_vie" require/>
+                    <input type="number" name="nbr_vie" id="nbr_vie" required/>
                 </td>
             </tr>
             <tr>
