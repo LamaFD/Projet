@@ -22,7 +22,7 @@ session_start();
                     <input type="text" name="titre_page" id="titre_page" size="35" required />
                 </br>
                 <label for="modif_vie">
-                     Modification du vie : 
+                     Modificateur de vie : 
                     </label>
                     <input type="number" name="modif_vie" id="modif_vie" size="35" required />
                 </br>

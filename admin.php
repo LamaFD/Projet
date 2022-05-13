@@ -93,7 +93,7 @@ session_start();
         <br/>
         <footer class="text-center">
                 <form methode="POST">
-                    <input type="submit" name="haut" id="haut" value="Cliquer ici pour retourner en haut de la page" formaction="index.php">
+                    <input type="submit" name="haut" id="haut" value="Cliquer ici pour retourner en haut de la page" formaction="admin.php">
                 </form>
         </footer>   
     </div>

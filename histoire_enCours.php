@@ -39,7 +39,7 @@ session_start();
                     </span>
                 </p>
                 <p>
-                    Nombre de vies restants : <?=$vie?>
+                    Nombre de vies restantes : <?=$vie?>
                 </p>
                 <?php if($vie<=0)
                 { 
